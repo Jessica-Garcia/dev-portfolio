@@ -1,6 +1,3 @@
 export function App() {
-
-  return (
-    <>Hello World!</>
-  )
+  return <>Hello World!</>;
 }
