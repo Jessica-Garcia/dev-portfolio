@@ -16,7 +16,7 @@ export const Header = () => {
     <Container>
       <LogoContainer>
         <LogoLink href="/">
-          <FaLaptopCode />
+          <FaLaptopCode color="  rgba(255, 255, 255, 0.66)" />
           <span>Jéssica Garcia</span>
         </LogoLink>
       </LogoContainer>

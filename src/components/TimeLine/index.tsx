@@ -1,12 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import {
-  CarouselButton,
-  CarouselButtonDot,
-  CarouselButtons,
   CarouselContainer,
   CarouselItem,
-  CarouselItemImg,
   CarouselItemText,
   CarouselItemTitle,
   CarouselMobileScrollNode,
@@ -44,15 +40,6 @@ export const Timeline = () => {
           })}
         </>
       </CarouselContainer>
-      <CarouselButtons>
-        {TimeLineData.map((item, index) => {
-          return (
-            <CarouselButton key={index}>
-              <CarouselButtonDot />
-            </CarouselButton>
-          );
-        })}
-      </CarouselButtons>
     </Section>
   );
 };

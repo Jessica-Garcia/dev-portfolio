@@ -2,18 +2,32 @@ import styled from "styled-components";
 
 export const Img = styled.img`
   width: 100%;
-  height: 22.5rem;
+  //height: 22.5rem;
   object-fit: cover;
-  overflow: hidden;
+  //border: solid red 2px;
+`;
+export const ProjectsTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Hr = styled.hr`
+  width: 90%;
+  height: 1px;
+  margin: 20px auto;
+  border: 0;
+  background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
 `;
 
 export const GridContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   padding: 3rem;
-  place-items: center;
+  justify-items: center;
   column-gap: 2rem;
   row-gap: 3rem;
+  //border: solid blue 2px;
+
   @media ${(props) => props.theme.breakpoints.sm} {
     display: flex;
     flex-direction: column;
@@ -26,6 +40,8 @@ export const BlogCard = styled.div`
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
   text-align: center;
   width: 400px;
+  //border: solid green 2px;
+  overflow: hidden;
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
   }
@@ -34,42 +50,25 @@ export const TitleContent = styled.div`
   text-align: center;
   z-index: 20;
   width: 100%;
+  padding-top: 1rem;
 `;
 
 export const HeaderThree = styled.h3`
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 2px;
-  color: #9cc9e3;
+  //border: solid red 2px;
   padding: 0.5rem 0;
   font-size: ${(props) => (props.title ? "3rem" : "2rem")};
 `;
 
-export const Hr = styled.hr`
-  width: 50px;
-  height: 3px;
-  margin: 20px auto;
-  border: 0;
-  background: #d0bb57;
-`;
-
-export const Intro = styled.div`
-  width: 170px;
-  margin: 0 auto;
-  color: #dce3e7;
-  font-family: "Droid Serif", serif;
-  font-size: 13px;
-  font-style: italic;
-  line-height: 18px;
-`;
-
 export const CardInfo = styled.p`
   width: 100%;
-  padding: 0 50px;
+  padding: 2rem 5rem;
   color: #e4e6e7;
   font-style: 2rem;
   line-height: 24px;
   text-align: justify;
-  height: 19rem;
+  height: 14.55rem;
   margin-bottom: 1.5rem;
   overflow: hidden;
 
@@ -80,9 +79,12 @@ export const CardInfo = styled.p`
 
 export const UtilityList = styled.ul`
   list-style-type: none;
+  //border: solid purple 2px;
+  height: 7rem;
   padding: 0;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin: 2.5rem 0;
 `;
 
@@ -90,20 +92,64 @@ export const ExternalLinks = styled.a`
   color: #d4c0c0;
   font-size: 1.6rem;
   padding: 1rem 1.5rem;
-  background: #6b3030;
+  background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
   border-radius: 15px;
   transition: 0.5s;
+  height: 4.1rem;
   &:hover {
-    background: #801414;
+    background: linear-gradient(270deg, #f46737 0%, #945dd6 100%);
   }
 `;
 
 export const TagList = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  //border: solid red 2px;
+  height: 12rem;
+  overflow: hidden;
 `;
+
 export const Tag = styled.li`
+  color: #d8bfbf;
+  font-size: 1.5rem;
+  background-color: ${(props) => props.theme.colors.background2};
+  padding: 2px 6px;
+  border-radius: 6px;
+  height: max-content;
+`;
+
+export const StatusContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  //border-top: solid 1px ${(props) => props.theme.colors.background2};
+
+  //border: solid red 2px;
+`;
+
+export const Status = styled.span`
+  color: #d8bfbf;
+  font-size: 1.5rem;
+  //border: solid 2px yellow;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+
+  span {
+    background: green;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+  }
+`;
+
+export const EndDate = styled.span`
   color: #d8bfbf;
   font-size: 1.5rem;
 `;

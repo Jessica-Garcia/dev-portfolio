@@ -1,5 +1,5 @@
 import React from "react";
-import { DiFirebase, DiReact, DiZend } from "react-icons/di";
+import { DiReact, DiFirebase } from "react-icons/di";
 import { GrNode } from "react-icons/gr";
 import { SiPostgresql } from "react-icons/si";
 import { TbBrandMongodb, TbBrandNextjs } from "react-icons/tb";
@@ -10,13 +10,7 @@ import {
   SectionText,
   SectionTitle,
 } from "../../styles/GlobalComponents";
-import {
-  List,
-  ListContainer,
-  ListItem,
-  ListParagraph,
-  ListTitle,
-} from "./styles";
+import { List, ListItem, ListParagraph, ListTitle } from "./styles";
 
 export const Technologies = () => {
   return (
@@ -31,26 +25,21 @@ export const Technologies = () => {
       <List>
         <ListItem>
           <ListTitle>Front-End</ListTitle>
-          <span>
-            <DiReact title="React" size="4rem" />{" "}
-            <FaSalesforce title="LWC" size="4rem" />{" "}
-            <TbBrandNextjs title="Next" size="4rem" />
-          </span>
+          <ListParagraph>React</ListParagraph>
+          <ListParagraph>Next</ListParagraph>
+          <ListParagraph>LWC</ListParagraph>
+          <ListParagraph>Visualforce</ListParagraph>
         </ListItem>
         <ListItem>
           <ListTitle>Back-End</ListTitle>
-          <span>
-            <GrNode title="Node" size="4rem" />{" "}
-            <FaSalesforce title="Apex" size="4rem" />
-            <FaJava title="Java" size="4rem" />{" "}
-          </span>
+          <ListParagraph>Java</ListParagraph>
+          <ListParagraph>Node</ListParagraph>
+          <ListParagraph>Apex</ListParagraph>
         </ListItem>
         <ListItem>
           <ListTitle>Databases</ListTitle>
-          <span>
-            <SiPostgresql title="Postgresql" size="3rem" />{" "}
-            <TbBrandMongodb title="Mongodb" size="3rem" />
-          </span>
+          <ListParagraph>Postgresql</ListParagraph>
+          <ListParagraph>Mongodb</ListParagraph>
         </ListItem>
       </List>
     </Section>

@@ -60,7 +60,7 @@
         },
         {
             "id": 5,
-            "name": "Mong"
+            "name": "Mongo"
         },
         {
             "id": 6,
@@ -80,6 +80,25 @@
         {
             "id": 3,
             "name": "Pausado"
+        }
+    ],
+
+    "achievements": [
+        {
+            "id": 1,
+            "title": "bla bla",
+            "text": "bla bla bla"
+        },
+
+        {
+            "id": 2,
+            "title": "bla bla",
+            "text": "bla bla bla"
+        },
+        {
+            "id": 3,
+            "title": "bla bla",
+            "text": "bla bla bla"
         }
     ]
 }
