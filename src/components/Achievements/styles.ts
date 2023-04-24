@@ -28,6 +28,7 @@ export const Box = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
+  overflow: hidden;
 
   @media ${(props) => props.theme.breakpoints.lg} {
     height: 210px;

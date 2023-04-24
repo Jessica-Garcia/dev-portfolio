@@ -19,18 +19,20 @@ export const Hr = styled.hr`
   background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
 `;
 
-export const GridContainer = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  padding: 3rem;
+export const SliderContainer = styled.section`
+  display: flex;
+  //grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  padding: 1rem;
   justify-items: center;
-  column-gap: 2rem;
-  row-gap: 3rem;
+  /* column-gap: 2rem;
+  row-gap: 3rem; */
   //border: solid blue 2px;
+  margin-bottom: 5rem;
+  border-radius: 8px;
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     padding: 2rem;
     padding-bottom: 0;
   }
@@ -39,9 +41,12 @@ export const BlogCard = styled.div`
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
   text-align: center;
-  width: 400px;
+  /* width: 200px;
+  max-width: 250px; */
+  width: 100px;
   //border: solid green 2px;
   overflow: hidden;
+  cursor: pointer;
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
   }
@@ -152,4 +157,5 @@ export const Status = styled.span`
 export const EndDate = styled.span`
   color: #d8bfbf;
   font-size: 1.5rem;
+  margin-left: 1.5rem;
 `;

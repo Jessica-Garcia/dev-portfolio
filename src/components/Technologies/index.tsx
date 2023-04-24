@@ -1,9 +1,9 @@
 import React from "react";
-import { DiReact, DiFirebase } from "react-icons/di";
+/* import { DiReact, DiFirebase } from "react-icons/di";
 import { GrNode } from "react-icons/gr";
 import { SiPostgresql } from "react-icons/si";
 import { TbBrandMongodb, TbBrandNextjs } from "react-icons/tb";
-import { FaJava, FaSalesforce } from "react-icons/fa";
+import { FaJava, FaSalesforce } from "react-icons/fa"; */
 import {
   Section,
   SectionDivider,

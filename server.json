@@ -7,9 +7,10 @@
             "image": "",
             "tags": ["Java"],
             "endDate": "2019-10-30T20:31:44.505Z",
-            "status": ["Concluído"],
+            "registrationDate": "2019-11-30T20:31:44.505Z",
+            "status": "Concluído",
             "repoLink": "https://google.com",
-            "visit": "https://google.com"
+            "webSiteLink": "https://google.com"
         }
     ],
 
@@ -80,6 +81,10 @@
         {
             "id": 3,
             "name": "Pausado"
+        },
+        {
+            "id":4,
+            "name": "Futuramente"
         }
     ],
 

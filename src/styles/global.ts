@@ -30,5 +30,23 @@ export const GlobalStyles = createGlobalStyle`
   li{
     list-style: none;
   }
+input{
+  height: 60px;
+}
 
+input, textarea{
+    border-radius: 8px;
+    background: #323238 ;
+    border: none;
+    box-shadow: 0 1px 5px #00dbc4;
+    color: #E1E1E6;
+    padding: 2rem;
+    font-size: 1.7rem;
+
+  }
+
+  :focus{
+    outline: 0;
+  }
+  
 `;

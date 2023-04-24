@@ -118,12 +118,11 @@ export const SectionSubText = styled.p`
 
 export const ButtonBack = styled.a`
   width: 15rem;
-  height: 3.8rem;
+  height: 4rem;
   border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin: 0 0 80px;
   color: #fff;
   background: linear-gradient(270deg, #00dbd8 0%, #b133ff 100%);

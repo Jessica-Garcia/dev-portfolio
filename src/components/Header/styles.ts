@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding-top: 3rem;
   margin-bottom: 2rem;
   align-items: center;
+  //border: solid red 2px;
   @media ${(props) => props.theme.breakpoints.sm} {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -33,7 +34,7 @@ export const LogoLink = styled.a`
   align-items: center;
   color: #ffffffbf;
   gap: 1rem;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
   //margin-bottom: 20px;
   width: 100%;
@@ -66,10 +67,11 @@ export const SocialIconsContainer = styled.div`
 `;
 
 export const NavLink = styled.a`
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 32px;
   color: rgba(255, 255, 255, 0.75);
   transition: 0.4s ease;
+  //border: solid 2px brown;
   &:hover {
     color: #fff;
     opacity: 1;

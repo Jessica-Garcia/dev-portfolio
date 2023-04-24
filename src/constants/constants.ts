@@ -27,6 +27,33 @@ export const projects = [
     visit: "https://google.com",
     id: 1,
   },
+  {
+    title: "teste",
+    description: "This is a code repository for the",
+    image: "/images/1.jpg",
+    tags: ["React", "JavaScript"],
+    source: "https://google.com",
+    visit: "https://google.com",
+    id: 2,
+  },
+  {
+    title: "teste",
+    description: "This is a code repository for the",
+    image: "/images/1.jpg",
+    tags: ["React", "JavaScript"],
+    source: "https://google.com",
+    visit: "https://google.com",
+    id: 3,
+  },
+  {
+    title: "teste",
+    description: "This is a code repository for the",
+    image: "/images/1.jpg",
+    tags: ["React", "JavaScript", "node"],
+    source: "https://google.com",
+    visit: "https://google.com",
+    id: 4,
+  },
 ];
 
 export const TimeLineData = [
