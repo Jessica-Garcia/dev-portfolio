@@ -2,9 +2,14 @@ import styled from "styled-components";
 
 export const Img = styled.img`
   width: 100%;
-  //height: 22.5rem;
+  height: 30rem;
   object-fit: cover;
-  //border: solid red 2px;
+`;
+
+export const ImgContainer = styled.div`
+  width: 100%;
+  height: 30rem;
+  overflow: hidden;
 `;
 export const ProjectsTitleContainer = styled.div`
   display: flex;
@@ -23,7 +28,7 @@ export const SliderContainer = styled.section`
   display: flex;
   //grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   padding: 1rem;
-  justify-items: center;
+  //justify-items: center;
   /* column-gap: 2rem;
   row-gap: 3rem; */
   //border: solid blue 2px;
@@ -44,6 +49,9 @@ export const BlogCard = styled.div`
   /* width: 200px;
   max-width: 250px; */
   width: 100px;
+  display: flex;
+  flex-direction: column;
+
   //border: solid green 2px;
   overflow: hidden;
   cursor: pointer;
@@ -56,6 +64,12 @@ export const TitleContent = styled.div`
   z-index: 20;
   width: 100%;
   padding-top: 1rem;
+`;
+
+export const Notice = styled.span`
+  align-self: flex-end;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
 `;
 
 export const HeaderThree = styled.h3`
@@ -72,7 +86,8 @@ export const CardInfo = styled.p`
   color: #e4e6e7;
   font-style: 2rem;
   line-height: 24px;
-  text-align: justify;
+  text-align: center;
+  //border: salmon solid 2px;
   height: 14.55rem;
   margin-bottom: 1.5rem;
   overflow: hidden;
@@ -82,10 +97,10 @@ export const CardInfo = styled.p`
   }
 `;
 
-export const UtilityList = styled.ul`
+export const UtilityList = styled.div`
   list-style-type: none;
   //border: solid purple 2px;
-  height: 7rem;
+  height: 3rem;
   padding: 0;
   display: flex;
   justify-content: space-around;
@@ -93,14 +108,21 @@ export const UtilityList = styled.ul`
   margin: 2.5rem 0;
 `;
 
-export const ExternalLinks = styled.a`
+export const ExternalLinks = styled.button`
   color: #d4c0c0;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   padding: 1rem 1.5rem;
   background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
   border-radius: 15px;
   transition: 0.5s;
   height: 4.1rem;
+  width: 12.6rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  cursor: pointer;
   &:hover {
     background: linear-gradient(270deg, #f46737 0%, #945dd6 100%);
   }
@@ -117,27 +139,39 @@ export const TagList = styled.ul`
   overflow: hidden;
 `;
 
-export const Tag = styled.li`
-  color: #d8bfbf;
+interface TagsProps {
+  variant: number;
+}
+
+export const Tag = styled.li<TagsProps>`
+  color: #fff;
+  text-shadow: 5px 5px 5px black;
   font-size: 1.5rem;
-  background-color: ${(props) => props.theme.colors.background2};
+  background: ${(props) => props.theme.tagColor[props.variant]};
   padding: 2px 6px;
   border-radius: 6px;
   height: max-content;
 `;
 
+interface StatusProps {
+  variant: "Concluído" | "Em progresso" | "Pausado" | "Futuro";
+}
+
 export const StatusContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 2rem;
+  justify-content: center;
+  //padding: 2rem;
   gap: 1rem;
   flex-wrap: wrap;
   //border-top: solid 1px ${(props) => props.theme.colors.background2};
 
   //border: solid red 2px;
+  margin: 2rem;
+  width: 90%;
+  align-self: center;
 `;
 
-export const Status = styled.span`
+export const Status = styled.span<StatusProps>`
   color: #d8bfbf;
   font-size: 1.5rem;
   //border: solid 2px yellow;
@@ -147,7 +181,16 @@ export const Status = styled.span`
   justify-content: center;
 
   span {
-    background: green;
+    background: ${(props) =>
+      props.variant === "Concluído"
+        ? props.theme.colors["green-300"]
+        : (props) =>
+            props.variant === "Pausado"
+              ? props.theme.colors["red-500"]
+              : (props) =>
+                  props.variant === "Em progresso"
+                    ? props.theme.colors.yellow
+                    : props.theme.colors["blue-600"]};
     width: 1.3rem;
     height: 1.3rem;
     border-radius: 50%;

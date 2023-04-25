@@ -8,8 +8,6 @@ export const Router = () => {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-      </Route>
-      <Route path="information/">
         <Route path="/information/insert" element={<ProjectInformation />} />
         <Route
           path="/information/update/:id"

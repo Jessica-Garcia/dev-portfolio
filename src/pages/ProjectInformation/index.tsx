@@ -1,4 +1,7 @@
-import * as RadioGroup from "@radix-ui/react-radio-group";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Controller, useForm } from "react-hook-form";
+
 import {
   StatusContent,
   ButtonsContainer,
@@ -14,18 +17,74 @@ import {
   ReturnButton,
   Root,
   TextAreaElement,
+  SaveButton,
 } from "./styles";
 import {
-  ButtonBack,
-  ButtonFront,
   Section,
   SectionDivider,
   SectionTitle,
 } from "../../styles/GlobalComponents";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+import { ProjectsContext } from "../../contexts/ProjectsContext";
+
+const newProjectFormSchema = z.object({
+  title: z.string().min(1),
+  description: z.string(),
+  image: z.string().url({ message: "URL inválida" }),
+  repoLink: z.string().url({ message: "URL inválida" }),
+  webSiteLink: z.string().url({ message: "URL inválida" }),
+  tags: z.string(),
+  endDate: z.string(),
+  status: z.enum(["Concluído", "Em progresso", "Pausado", "Futuro"]),
+});
+
+type NewProjectFormInputs = z.infer<typeof newProjectFormSchema>;
 
 export const ProjectInformation = () => {
+  const { createProject } = useContext(ProjectsContext);
+  const { control, register, handleSubmit, watch, reset } =
+    useForm<NewProjectFormInputs>({
+      resolver: zodResolver(newProjectFormSchema),
+      defaultValues: {
+        description: "",
+        image: "",
+        repoLink: "",
+        webSiteLink: "",
+        tags: "",
+        status: "Em progresso",
+      },
+    });
+
   const navigate = useNavigate();
+  const status = watch("status");
+  const handleCreateProject = async (data: NewProjectFormInputs) => {
+    const {
+      description,
+      title,
+      image,
+      repoLink,
+      webSiteLink,
+      tags,
+      status,
+      endDate,
+    } = data;
+
+    await createProject({
+      description,
+      title,
+      image,
+      repoLink,
+      webSiteLink,
+      tags,
+      status,
+      endDate,
+    });
+
+    reset();
+  };
+
   return (
     <Section>
       <br />
@@ -34,105 +93,112 @@ export const ProjectInformation = () => {
       <SectionTitle>Cadastre um novo projeto</SectionTitle>
       <br />
       <FormContainer>
-        <FormContent autoComplete="off">
+        <FormContent
+          id="projectsForm"
+          onSubmit={handleSubmit(handleCreateProject)}
+          autoComplete="off"
+        >
           <FieldsContainer>
             <FieldsContent>
-              <InputLabel htmlFor="name">Nome do Projeto</InputLabel>
-              <InputElement type="text" name="name" id="name" required />
-            </FieldsContent>
-
-            <FieldsContent>
-              <InputLabel htmlFor="img">Imagem</InputLabel>
+              <InputLabel htmlFor="title">Nome do Projeto</InputLabel>
               <InputElement
-                type="url"
-                pattern=".*\.com.*"
-                name="img"
-                id="img"
-              />
-            </FieldsContent>
-            <FieldsContent>
-              <InputLabel htmlFor="tag">Tags</InputLabel>
-              <InputElement type="text" name="tag" id="tag" list="tags" />
-              <datalist id="tags">
-                <option>Java</option>
-                <option>React</option>
-                <option>Node</option>
-                <option>Mongo</option>
-              </datalist>
-            </FieldsContent>
-            <FieldsContent>
-              <InputLabel htmlFor="linkWeb">Link de deploy</InputLabel>
-              <InputElement
-                type="url"
-                pattern=".*\.com.*"
-                name="linkWeb"
-                id="linkWeb"
+                {...register("title")}
+                type="text"
+                autoFocus
+                required
               />
             </FieldsContent>
 
             <FieldsContent>
-              <InputLabel htmlFor="linkRepo">Link do repositório</InputLabel>
+              <InputLabel htmlFor="image">URL da Imagem</InputLabel>
+              <InputElement {...register("image")} type="text" />
+            </FieldsContent>
+            <FieldsContent>
+              <InputLabel htmlFor="tags">Tags</InputLabel>
               <InputElement
-                type="url"
-                pattern=".*\.com.*"
-                name="linkRepo"
-                id="linkRepo"
+                {...register("tags")}
+                type="text"
+                placeholder="Adicione tags separadas por espaço"
+              />
+            </FieldsContent>
+            <FieldsContent>
+              <InputLabel htmlFor="webSiteLink">Link de deploy</InputLabel>
+              <InputElement
+                {...register("webSiteLink")}
+                type="text"
+                // pattern=".*\.com.*"
+              />
+            </FieldsContent>
+
+            <FieldsContent>
+              <InputLabel htmlFor="repoLink">Link do repositório</InputLabel>
+              <InputElement
+                {...register("repoLink")}
+                type="text"
+                // pattern=".*\.com.*"
               />
             </FieldsContent>
           </FieldsContainer>
           <FieldsContainer>
             <FieldsContent>
               <LegendElement>Status</LegendElement>
+              <Controller
+                control={control}
+                name="status"
+                render={({ field }) => {
+                  return (
+                    <Root onValueChange={field.onChange} value={field.value}>
+                      <StatusContent>
+                        <Item value="Em progresso" id="Em progresso">
+                          <Indicator />
+                        </Item>
+                        <InputLabel htmlFor="Em progresso">
+                          Em andamento
+                        </InputLabel>
+                      </StatusContent>
+                      <StatusContent>
+                        <Item value="Concluído" id="Concluído">
+                          <Indicator />
+                        </Item>
+                        <InputLabel htmlFor="Concluído">Concluído</InputLabel>
+                      </StatusContent>
 
-              <Root defaultValue="inProgress">
-                <StatusContent>
-                  <Item value="inProgress">
-                    <Indicator />
-                  </Item>
-                  <InputLabel htmlFor="inProgress">Em andamento</InputLabel>
-                </StatusContent>
-                <StatusContent>
-                  <Item value="done">
-                    <Indicator />
-                  </Item>
-                  <InputLabel htmlFor="done">Concluído</InputLabel>
-                </StatusContent>
-
-                <StatusContent>
-                  <Item value="paused">
-                    <Indicator />
-                  </Item>
-                  <InputLabel htmlFor="paused">Pausado</InputLabel>
-                </StatusContent>
-                <StatusContent>
-                  <Item value="future">
-                    <Indicator />
-                  </Item>
-                  <InputLabel htmlFor="future">Futuro</InputLabel>
-                </StatusContent>
-              </Root>
+                      <StatusContent>
+                        <Item value="Pausado" id="Pausado">
+                          <Indicator />
+                        </Item>
+                        <InputLabel htmlFor="Pausado">Pausado</InputLabel>
+                      </StatusContent>
+                      <StatusContent>
+                        <Item value="Futuro" id="Futuro">
+                          <Indicator />
+                        </Item>
+                        <InputLabel htmlFor="Futuro">Futuro</InputLabel>
+                      </StatusContent>
+                    </Root>
+                  );
+                }}
+              />
             </FieldsContent>
             <FieldsContent>
               <InputLabel htmlFor="endDate">Data de conclusão</InputLabel>
-              <InputElement type="date" name="endDate" id="endDate" />
+              <InputElement
+                type="date"
+                {...register("endDate")}
+                disabled={status !== "Concluído"}
+              />
             </FieldsContent>
             <FieldsContent>
               <InputLabel htmlFor="description">Descrição</InputLabel>
-              <TextAreaElement
-                name="description"
-                id="description"
-                rows={6}
-                cols={5}
-                maxLength={200}
-              ></TextAreaElement>
+              <TextAreaElement {...register("description")}></TextAreaElement>
             </FieldsContent>
           </FieldsContainer>
         </FormContent>
         <ButtonsContainer>
           <ReturnButton onClick={() => navigate("/")}>Voltar</ReturnButton>
-          <ButtonBack>
-            <ButtonFront>Salvar</ButtonFront>
-          </ButtonBack>
+          <SaveButton form="projectsForm" type="submit">
+            Salvar
+          </SaveButton>
         </ButtonsContainer>
       </FormContainer>
     </Section>

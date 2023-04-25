@@ -1,109 +1,124 @@
 {
-    "projects": [
-        {
-            "id": 1,
-            "title": "Jogo de Xadrez",
-            "description": "Jogo de xadrez desenvolvido em java.",
-            "image": "",
-            "tags": ["Java"],
-            "endDate": "2019-10-30T20:31:44.505Z",
-            "registrationDate": "2019-11-30T20:31:44.505Z",
-            "status": "Concluído",
-            "repoLink": "https://google.com",
-            "webSiteLink": "https://google.com"
-        }
-    ],
-
-    "timeLineData": [
-        { 
-            "id": 1, 
-            "year": 2019, 
-            "text": "Java" 
-        },
-        { 
-            "id": 2, 
-            "year": 2020, 
-            "text": "Javascript" 
-        },
-        { 
-            "id": 3,
-            "year": 2021, 
-            "text": "Node"
-        },
-        { 
-            "id": 4, 
-            "year": 2022, 
-            "text": "HTML/CSS" 
-        },
-        { 
-            "id": 5, 
-            "year": 2023, 
-            "text": "React" 
-        }
-    ],
-
-    "tags": [
-        {
-            "id": 1,
-            "name": "Java"
-        },
-        {
-            "id": 2,
-            "name": "Javascript"
-        },
-        {
-            "id": 3,
-            "name": "React"
-        },
-        {
-            "id": 4,
-            "name": "Node.js"
-        },
-        {
-            "id": 5,
-            "name": "Mongo"
-        },
-        {
-            "id": 6,
-            "name": "Express"
-        }   
-    ],
-
-    "status": [
-        {
-            "id": 1,
-            "name": "Concluído"
-        },
-        {
-            "id": 2,
-            "name": "Em andamento"
-        },
-        {
-            "id": 3,
-            "name": "Pausado"
-        },
-        {
-            "id":4,
-            "name": "Futuramente"
-        }
-    ],
-
-    "achievements": [
-        {
-            "id": 1,
-            "title": "bla bla",
-            "text": "bla bla bla"
-        },
-
-        {
-            "id": 2,
-            "title": "bla bla",
-            "text": "bla bla bla"
-        },
-        {
-            "id": 3,
-            "title": "bla bla",
-            "text": "bla bla bla"
-        }
-    ]
+  "projects": [
+    {
+      "id": 1,
+      "title": "Chess System",
+      "description": "Jogo de xadrez desenvolvido em java.",
+      "image": "https://images.unsplash.com/photo-1679210208109-2b13aa6b91d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80&h=400",
+      "tags": "Java",
+      "endDate": "2019-10-30T20:31:44.505Z",
+      "registrationDate": "2019-11-30T20:31:44.505Z",
+      "status": "Concluído",
+      "repoLink": "https://google.com",
+      "webSiteLink": "https://google.com"
+    },
+    {
+      "description": "teste",
+      "title": "teste",
+      "image": "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80&h=400",
+      "repoLink": "",
+      "webSiteLink": "",
+      "tags": "Node React",
+      "status": "Em progresso",
+      "endDate": "",
+      "registrationDate": "2023-04-25T19:47:39.219Z",
+      "id": 2
+    }
+  ],
+  "timeLineData": [
+    {
+      "id": 1,
+      "year": 2019,
+      "text": "Java"
+    },
+    {
+      "id": 2,
+      "year": 2020,
+      "text": "Javascript"
+    },
+    {
+      "id": 3,
+      "year": 2021,
+      "text": "Node"
+    },
+    {
+      "id": 4,
+      "year": 2022,
+      "text": "HTML/CSS"
+    },
+    {
+      "id": 5,
+      "year": 2023,
+      "text": "React"
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "Java"
+    },
+    {
+      "id": 2,
+      "name": "Javascript"
+    },
+    {
+      "id": 3,
+      "name": "React"
+    },
+    {
+      "id": 4,
+      "name": "Node.js"
+    },
+    {
+      "id": 5,
+      "name": "Mongo"
+    },
+    {
+      "id": 6,
+      "name": "Express"
+    },
+    {
+      "id": 7,
+      "name": "Apex"
+    },
+    {
+      "id": 8,
+      "name": "LWC"
+    }
+  ],
+  "status": [
+    {
+      "id": 1,
+      "name": "Concluído"
+    },
+    {
+      "id": 2,
+      "name": "Em andamento"
+    },
+    {
+      "id": 3,
+      "name": "Pausado"
+    },
+    {
+      "id": 4,
+      "name": "Futuro"
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "bla bla",
+      "text": "bla bla bla"
+    },
+    {
+      "id": 2,
+      "title": "bla bla",
+      "text": "bla bla bla"
+    },
+    {
+      "id": 3,
+      "title": "bla bla",
+      "text": "bla bla bla"
+    }
+  ]
 }
