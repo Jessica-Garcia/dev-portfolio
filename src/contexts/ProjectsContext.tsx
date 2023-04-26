@@ -1,10 +1,4 @@
-import React, {
-  ReactNode,
-  createContext,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { ReactNode, createContext, useCallback, useState } from "react";
 import { api } from "../lib/axios";
 import { IProjectInformation } from "../@types/IProjectInformation";
 import { ICreateProjectInformationInput } from "../@types/ICreateProjectInformationInput";
@@ -12,7 +6,6 @@ import { ICreateProjectInformationInput } from "../@types/ICreateProjectInformat
 interface ProjectsContextType {
   projects: IProjectInformation[];
   setProjects: React.Dispatch<React.SetStateAction<IProjectInformation[]>>;
-  fetchProjects: (query?: string) => Promise<void>;
   createProject: (data: ICreateProjectInformationInput) => Promise<void>;
 }
 
@@ -57,24 +50,13 @@ export const ProjectsProvider = ({ children }: ProjectsProviderProps) => {
     []
   );
 
-  const fetchProjects = useCallback(async (query?: string) => {
-    const response = await api.get("projects", {
-      /* params: {
-        _sort: "createdAt",
-        _order: "desc",
-        q: query,
-      }, */
-    });
-    setProjects(response.data);
-  }, []);
-
-  useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects]);
-
   return (
     <ProjectsContext.Provider
-      value={{ projects, fetchProjects, createProject, setProjects }}
+      value={{
+        projects,
+        createProject,
+        setProjects,
+      }}
     >
       {children}
     </ProjectsContext.Provider>

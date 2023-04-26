@@ -26,19 +26,10 @@ export const Hr = styled.hr`
 
 export const SliderContainer = styled.section`
   display: flex;
-  //grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  padding: 1rem;
-  //justify-items: center;
-  //justify-content: center;
-  /* column-gap: 2rem;
-  row-gap: 3rem; */
-  //border: solid blue 2px;
   margin-bottom: 5rem;
   border-radius: 8px;
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    //display: flex;
-    //flex-direction: column;
     padding: 2rem;
     padding-bottom: 0;
   }
@@ -47,9 +38,8 @@ export const BlogCard = styled.div`
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
   text-align: center;
-  /* width: 200px;
-  max-width: 250px; */
-  //width: 100px;
+  min-width: 40rem;
+  margin: 1.6rem;
   display: flex;
   flex-direction: column;
 
@@ -135,7 +125,6 @@ export const TagList = styled.ul`
   padding: 2rem;
   gap: 1rem;
   flex-wrap: wrap;
-  //border: solid red 2px;
   height: 12rem;
   overflow: hidden;
 `;
@@ -164,9 +153,6 @@ export const StatusContainer = styled.div`
   //padding: 2rem;
   gap: 1rem;
   flex-wrap: wrap;
-  //border-top: solid 1px ${(props) => props.theme.colors.background2};
-
-  //border: solid red 2px;
   margin: 2rem;
   width: 90%;
   align-self: center;

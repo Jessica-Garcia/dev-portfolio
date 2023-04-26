@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import {
   BlogCard,
@@ -27,28 +27,20 @@ import {
   SectionTitle,
 } from "../../styles/GlobalComponents";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import "keen-slider/keen-slider.min.css";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  FaArrowRight,
-  FaGitAlt,
-  FaGithub,
-  FaInternetExplorer,
-  FaPencilAlt,
-  FaPencilRuler,
-  FaTrashAlt,
-} from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaPencilAlt } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
 import { ProjectsContext } from "../../contexts/ProjectsContext";
 import { dateFormatter } from "../../utils/formatter";
 import { DeleteModal } from "../DeleteModal";
 import { IProjectInformation } from "../../@types/IProjectInformation";
 import { api } from "../../lib/axios";
+import "keen-slider/keen-slider.min.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Projects = () => {
   const { projects, fetchProjects, setProjects } = useContext(ProjectsContext);
 
-  const [ref] = useKeenSlider<HTMLTableSectionElement>({
+  const [sliderRef] = useKeenSlider({
     loop: true,
     rtl: true,
     slides: {
@@ -89,7 +81,7 @@ export const Projects = () => {
           Arraste para o lado <FaArrowRight />
         </Notice>
       )}
-      <SliderContainer ref={ref} className="keen-slider">
+      <SliderContainer ref={sliderRef} className="keen-slider">
         {projects.map(
           ({
             id,
@@ -103,7 +95,10 @@ export const Projects = () => {
             endDate,
           }) => {
             return (
-              <BlogCard key={id} className="keen-slider__slide number-slide1">
+              <BlogCard
+                key={id}
+                className={`keen-slider__slide number-slide${id}`}
+              >
                 <ImgContainer>
                   <Img src={image} />
                 </ImgContainer>
@@ -137,10 +132,6 @@ export const Projects = () => {
                     projectId={id}
                     deleteProject={handleDeleteProject}
                   />
-                  {/* <ExternalLinks>
-                    <FaTrashAlt />
-                    Excluir
-                  </ExternalLinks> */}
                 </UtilityList>
                 <UtilityList>
                   <Link to={repoLink}>
