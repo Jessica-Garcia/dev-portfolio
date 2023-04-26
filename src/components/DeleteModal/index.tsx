@@ -9,7 +9,7 @@ import {
   Title,
 } from "./styles";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { ExternalLinks } from "../ProjectsCopy/styles";
+import { ExternalLinks } from "../Projects/styles";
 import { FaTrashAlt } from "react-icons/fa";
 
 interface IDeleteModalProps {
