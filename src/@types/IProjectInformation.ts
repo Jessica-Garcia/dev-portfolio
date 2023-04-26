@@ -12,5 +12,5 @@ export interface IProjectInformation {
   tags: string;
   registrationDate: Date;
   status: "Concluído" | "Em progresso" | "Pausado" | "Futuro";
-  endDate: string;
+  endDate?: string;
 }

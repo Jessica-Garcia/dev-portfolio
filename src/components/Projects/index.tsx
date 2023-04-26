@@ -24,12 +24,9 @@ import {
   ButtonFront,
   Section,
   SectionDivider,
-  SectionText,
   SectionTitle,
 } from "../../styles/GlobalComponents";
-import { projects } from "../../constants/constants";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-
 import "keen-slider/keen-slider.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -44,10 +41,12 @@ import {
 import { TbWorld } from "react-icons/tb";
 import { ProjectsContext } from "../../contexts/ProjectsContext";
 import { dateFormatter } from "../../utils/formatter";
-import { defaultTheme } from "../../themes/default";
+import { DeleteModal } from "../DeleteModal";
+import { IProjectInformation } from "../../@types/IProjectInformation";
+import { api } from "../../lib/axios";
 
 export const Projects = () => {
-  const { projects } = useContext(ProjectsContext);
+  const { projects, fetchProjects, setProjects } = useContext(ProjectsContext);
 
   const [ref] = useKeenSlider<HTMLTableSectionElement>({
     loop: true,
@@ -55,10 +54,19 @@ export const Projects = () => {
     slides: {
       origin: 1,
       perView: 2,
-      spacing: 10,
+      spacing: 20,
     },
   });
   const navigate = useNavigate();
+
+  const handleDeleteProject = async (id: number) => {
+    await api.delete<IProjectInformation>(`projects/${id}`);
+    const newProjectList = projects?.filter((project) => {
+      return project.id !== id;
+    });
+    setProjects(newProjectList);
+    fetchProjects();
+  };
   return (
     <Section id="projects">
       <SectionDivider />
@@ -124,10 +132,15 @@ export const Projects = () => {
                     <FaPencilAlt />
                     Editar
                   </ExternalLinks>
-                  <ExternalLinks>
+
+                  <DeleteModal
+                    projectId={id}
+                    deleteProject={handleDeleteProject}
+                  />
+                  {/* <ExternalLinks>
                     <FaTrashAlt />
                     Excluir
-                  </ExternalLinks>
+                  </ExternalLinks> */}
                 </UtilityList>
                 <UtilityList>
                   <Link to={repoLink}>
@@ -150,7 +163,7 @@ export const Projects = () => {
                   <Status variant={status}>
                     <span></span> <strong>{status}</strong>
                   </Status>
-                  {status === "Concluído" && (
+                  {status === "Concluído" && endDate && (
                     <EndDate>{dateFormatter.format(new Date(endDate))}</EndDate>
                   )}
                 </StatusContainer>

@@ -29,6 +29,7 @@ export const SliderContainer = styled.section`
   //grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   padding: 1rem;
   //justify-items: center;
+  //justify-content: center;
   /* column-gap: 2rem;
   row-gap: 3rem; */
   //border: solid blue 2px;
@@ -48,11 +49,11 @@ export const BlogCard = styled.div`
   text-align: center;
   /* width: 200px;
   max-width: 250px; */
-  width: 100px;
+  //width: 100px;
   display: flex;
   flex-direction: column;
 
-  //border: solid green 2px;
+  border: solid green 2px;
   overflow: hidden;
   cursor: pointer;
   @media ${(props) => props.theme.breakpoints.sm} {
@@ -110,7 +111,7 @@ export const UtilityList = styled.div`
 
 export const ExternalLinks = styled.button`
   color: #d4c0c0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding: 1rem 1.5rem;
   background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
   border-radius: 15px;

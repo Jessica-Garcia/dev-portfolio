@@ -32,9 +32,9 @@ import { ProjectsContext } from "../../contexts/ProjectsContext";
 const newProjectFormSchema = z.object({
   title: z.string().min(1),
   description: z.string(),
-  image: z.string().url({ message: "URL inválida" }),
-  repoLink: z.string().url({ message: "URL inválida" }),
-  webSiteLink: z.string().url({ message: "URL inválida" }),
+  image: z.string(),
+  repoLink: z.string(),
+  webSiteLink: z.string(),
   tags: z.string(),
   endDate: z.string(),
   status: z.enum(["Concluído", "Em progresso", "Pausado", "Futuro"]),
@@ -123,20 +123,12 @@ export const ProjectInformation = () => {
             </FieldsContent>
             <FieldsContent>
               <InputLabel htmlFor="webSiteLink">Link de deploy</InputLabel>
-              <InputElement
-                {...register("webSiteLink")}
-                type="text"
-                // pattern=".*\.com.*"
-              />
+              <InputElement {...register("webSiteLink")} type="text" />
             </FieldsContent>
 
             <FieldsContent>
               <InputLabel htmlFor="repoLink">Link do repositório</InputLabel>
-              <InputElement
-                {...register("repoLink")}
-                type="text"
-                // pattern=".*\.com.*"
-              />
+              <InputElement {...register("repoLink")} type="text" />
             </FieldsContent>
           </FieldsContainer>
           <FieldsContainer>
@@ -185,7 +177,7 @@ export const ProjectInformation = () => {
               <InputElement
                 type="date"
                 {...register("endDate")}
-                disabled={status !== "Concluído"}
+                required={status === "Concluído"}
               />
             </FieldsContent>
             <FieldsContent>

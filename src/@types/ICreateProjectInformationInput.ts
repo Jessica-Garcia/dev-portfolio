@@ -1,5 +1,3 @@
-import { Tag } from "./IProjectInformation";
-
 export interface ICreateProjectInformationInput {
   title: string;
   description?: string;

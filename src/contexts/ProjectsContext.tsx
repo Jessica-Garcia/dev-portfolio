@@ -1,4 +1,4 @@
-import {
+import React, {
   ReactNode,
   createContext,
   useCallback,
@@ -11,6 +11,7 @@ import { ICreateProjectInformationInput } from "../@types/ICreateProjectInformat
 
 interface ProjectsContextType {
   projects: IProjectInformation[];
+  setProjects: React.Dispatch<React.SetStateAction<IProjectInformation[]>>;
   fetchProjects: (query?: string) => Promise<void>;
   createProject: (data: ICreateProjectInformationInput) => Promise<void>;
 }
@@ -64,7 +65,6 @@ export const ProjectsProvider = ({ children }: ProjectsProviderProps) => {
         q: query,
       }, */
     });
-    console.log(response.data);
     setProjects(response.data);
   }, []);
 
@@ -74,7 +74,7 @@ export const ProjectsProvider = ({ children }: ProjectsProviderProps) => {
 
   return (
     <ProjectsContext.Provider
-      value={{ projects, fetchProjects, createProject }}
+      value={{ projects, fetchProjects, createProject, setProjects }}
     >
       {children}
     </ProjectsContext.Provider>
