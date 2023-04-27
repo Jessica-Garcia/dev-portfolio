@@ -26,7 +26,6 @@ import {
 } from "../../styles/GlobalComponents";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-
 import { ProjectsContext } from "../../contexts/ProjectsContext";
 
 const newProjectFormSchema = z.object({
@@ -59,6 +58,7 @@ export const ProjectInformation = () => {
 
   const navigate = useNavigate();
   const status = watch("status");
+
   const handleCreateProject = async (data: NewProjectFormInputs) => {
     const {
       description,

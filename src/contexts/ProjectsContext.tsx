@@ -2,10 +2,10 @@ import React, { ReactNode, createContext, useCallback, useState } from "react";
 import { api } from "../lib/axios";
 import { IProjectInformation } from "../@types/IProjectInformation";
 import { ICreateProjectInformationInput } from "../@types/ICreateProjectInformationInput";
-
 interface ProjectsContextType {
   projects: IProjectInformation[];
   setProjects: React.Dispatch<React.SetStateAction<IProjectInformation[]>>;
+
   createProject: (data: ICreateProjectInformationInput) => Promise<void>;
 }
 
@@ -44,7 +44,6 @@ export const ProjectsProvider = ({ children }: ProjectsProviderProps) => {
         endDate,
         registrationDate: new Date(),
       });
-      console.log(data);
       setProjects((state) => [...state, response.data]);
     },
     []

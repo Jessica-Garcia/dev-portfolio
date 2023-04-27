@@ -48,6 +48,7 @@ import { api } from "../../lib/axios";
 import "keen-slider/keen-slider.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import { SearchForm } from "../SearchForm";
+import { ICreateProjectInformationInput } from "../../@types/ICreateProjectInformationInput";
 
 export const Projects = () => {
   const { projects, setProjects } = useContext(ProjectsContext);
