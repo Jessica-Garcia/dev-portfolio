@@ -8,7 +8,7 @@
 
 <br>
 
-**Portfólio Dev** é um projeto criado para funcionar como uma apresentação da pessoa desenvolvedora, com a funcionalidade de cadastro e apresentação de seus projetos.
+**Dev Portfólio** é um projeto criado para funcionar como uma apresentação da pessoa desenvolvedora, com a funcionalidade de cadastro e apresentação de seus projetos.
 
 <br>
 
