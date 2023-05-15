@@ -11,20 +11,23 @@ export const MainContainer = styled.main`
   overflow: hidden;
   //border: solid red 2px;
 
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  span {
+    align-self: flex-end;
+  }
+
   @media ${(props) => props.theme.breakpoints.md} {
-    padding: 24px 48px 0;
-    flex-direction: column;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 16px 16px 0;
-
-    width: calc(100vw - 32px);
-    flex-direction: column;
   }
 `;
 
-export const Img = styled.img`
+/* xport const Img = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 6px;
@@ -38,10 +41,6 @@ export const ImgContainer = styled.div`
   //border: solid ${(props) => props.theme.colors.background2} 2px;
 
   overflow: hidden;
-`;
-export const ProjectsTitleContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
 
 export const Hr = styled.hr`
@@ -316,3 +315,4 @@ export const EndDate = styled.span`
   font-size: 1.5rem;
   margin-left: 1.5rem;
 `;
+ */

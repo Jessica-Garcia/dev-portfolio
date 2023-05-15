@@ -27,8 +27,6 @@ export const Content = styled(AlertDialog.Content)`
   background: ${(props) => props.theme.colors.background1};
 
   position: fixed;
-
-  /* Centralizar na tela */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -94,4 +92,25 @@ export const ActionButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;
+`;
+
+export const ExternalLinks = styled.button`
+  color: #d4c0c0;
+  font-size: 1.2rem;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
+  border-radius: 15px;
+  transition: 0.5s;
+  height: 3.1rem;
+  width: 9.6rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    background: linear-gradient(270deg, #f46737 0%, #945dd6 100%);
+  }
 `;

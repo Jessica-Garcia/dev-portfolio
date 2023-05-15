@@ -7,9 +7,9 @@ import {
   Description,
   Overlay,
   Title,
+  ExternalLinks,
 } from "./styles";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { ExternalLinks } from "../Projects/styles";
 import { FaTrashAlt } from "react-icons/fa";
 
 interface IDeleteModalProps {

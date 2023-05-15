@@ -1,46 +1,37 @@
-import React from "react";
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 import { FaLaptopCode } from "react-icons/fa";
-import {
-  Container,
-  LinksContainer,
-  LogoContainer,
-  LogoLink,
-  NavLink,
-  SocialIcons,
-  SocialIconsContainer,
-} from "./styles";
+import { Container, NavLink, SocialIconsContainer } from "./styles";
 
 export const Header = () => {
   return (
     <Container>
-      <LogoContainer>
-        <LogoLink href="/">
+      <div>
+        <a href="/">
           <FaLaptopCode color="  rgba(255, 255, 255, 0.66)" />
           <span>Jéssica Garcia</span>
-        </LogoLink>
-      </LogoContainer>
-      <LinksContainer>
+        </a>
+      </div>
+      <ul>
         <li>
-          <NavLink href="#projects">Projetos</NavLink>
+          <NavLink href="#about">Sobre</NavLink>
         </li>
         <li>
           <NavLink href="#tech">Tecnologias</NavLink>
         </li>
         <li>
-          <NavLink href="#about">Sobre</NavLink>
+          <NavLink href="#projects">Projetos</NavLink>
         </li>
-      </LinksContainer>
+      </ul>
       <SocialIconsContainer>
-        <SocialIcons href="https://github.com">
+        <a href="https://github.com">
           <AiFillGithub size="3rem" />
-        </SocialIcons>
-        <SocialIcons href="https://linkedin.com">
+        </a>
+        <a href="https://linkedin.com">
           <AiFillLinkedin size="3rem" />
-        </SocialIcons>
-        <SocialIcons href="https://instagram.com">
+        </a>
+        <a href="https://instagram.com">
           <AiFillInstagram size="3rem" />
-        </SocialIcons>
+        </a>
       </SocialIconsContainer>
     </Container>
   );

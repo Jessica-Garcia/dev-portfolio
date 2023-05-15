@@ -1,12 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-
-import {
-  CarouselContainer,
-  CarouselItem,
-  CarouselItemText,
-  CarouselItemTitle,
-  CarouselMobileScrollNode,
-} from "./styles";
+import { Container } from "./styles";
 import {
   Section,
   SectionDivider,
@@ -19,27 +11,24 @@ export const Timeline = () => {
   return (
     <Section id="about">
       <SectionDivider />
-      <br />
       <SectionTitle>Sobre mim</SectionTitle>
       <SectionText>
         Mantenho-me sempre buscando conhecimento sobre a área tecnológica, para
         que dessa forma eu possa contribuir com o crescimento e inovação dos
         negócios.
       </SectionText>
-      <CarouselContainer>
-        <>
-          {TimeLineData.map((item, index) => {
-            return (
-              <CarouselMobileScrollNode key={index}>
-                <CarouselItem>
-                  <CarouselItemTitle>{item.year}</CarouselItemTitle>
-                  <CarouselItemText> {item.text}</CarouselItemText>
-                </CarouselItem>
-              </CarouselMobileScrollNode>
-            );
-          })}
-        </>
-      </CarouselContainer>
+      <Container>
+        {TimeLineData.map((item, index) => {
+          return (
+            <div key={index}>
+              <span>
+                <h4>{item.year}</h4>
+                <p> {item.text}</p>
+              </span>
+            </div>
+          );
+        })}
+      </Container>
     </Section>
   );
 };

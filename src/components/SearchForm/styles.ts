@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const SearchFormContainer = styled.form`
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   position: relative;
+
   input {
     height: 30px;
-    border-radius: 6px;
+    border-radius: 10px;
     border: 0;
     padding: 1rem;
-    width: 12rem;
+    width: 11.5rem;
 
     &::placeholder {
       color: #e4e6e7;
@@ -27,7 +28,7 @@ export const SearchFormContainer = styled.form`
     color: #e4e6e7;
     font-weight: bold;
     position: absolute;
-    right: 50px;
+    right: 45px;
     top: 9px;
     cursor: pointer;
 
@@ -47,7 +48,7 @@ export const SearchFormContainer = styled.form`
     gap: 0.5rem;
     border-radius: 50%;
     height: 30px;
-    width: 30x;
+    width: 30px;
     border: 0;
     background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
     color: #e4e6e7;

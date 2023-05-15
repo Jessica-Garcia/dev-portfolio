@@ -33,7 +33,7 @@ export const SearchForm = ({ onGetProjects }: SearchFormProps) => {
     <SearchFormContainer onSubmit={handleSubmit(handleSearchProjects)}>
       <input
         type="text"
-        placeholder="Filtre por tag"
+        placeholder="Filtrar por tag"
         autoComplete="off"
         {...register("query")}
       />

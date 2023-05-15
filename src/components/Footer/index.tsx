@@ -1,44 +1,34 @@
-import React from "react";
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
-
-import { SocialIcons } from "../Header/styles";
-import {
-  FooterWrapper,
-  LinkColumn,
-  LinkItem,
-  LinkList,
-  LinkTitle,
-  SocialContainer,
-} from "./styles";
+import { FooterWrapper } from "./styles";
 
 export const Footer = () => {
   return (
     <FooterWrapper>
-      <LinkList>
-        <LinkColumn>
-          <LinkTitle>Telefone</LinkTitle>
-          <LinkItem href="tel:999-999-999">999-999-999</LinkItem>
-        </LinkColumn>
-        <LinkColumn>
-          <LinkTitle>Email</LinkTitle>
-          <LinkItem href="mailto:email@email.com">email@email.com</LinkItem>
-        </LinkColumn>
-        <LinkColumn>
-          <LinkTitle>Redes Sociais</LinkTitle>
+      <ul>
+        <div>
+          <h4>Telefone</h4>
+          <a href="tel:999-999-999">999-999-999</a>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:email@email.com">email@email.com</a>
+        </div>
+        <div>
+          <h4>Redes Sociais</h4>
 
-          <SocialContainer>
-            <SocialIcons href="https://github.com">
+          <span>
+            <a href="https://github.com">
               <AiFillGithub size="2rem" />
-            </SocialIcons>
-            <SocialIcons href="https://linkedin.com">
+            </a>
+            <a href="https://linkedin.com">
               <AiFillLinkedin size="2rem" />
-            </SocialIcons>
-            <SocialIcons href="https://instagram.com">
+            </a>
+            <a href="https://instagram.com">
               <AiFillInstagram size="2rem" />
-            </SocialIcons>
-          </SocialContainer>
-        </LinkColumn>
-      </LinkList>
+            </a>
+          </span>
+        </div>
+      </ul>
     </FooterWrapper>
   );
 };

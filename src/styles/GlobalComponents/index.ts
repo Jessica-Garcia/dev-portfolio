@@ -9,18 +9,11 @@ export const Section = styled.section`
   box-sizing: content-box;
   position: relative;
   overflow: hidden;
-  //grid-template-columns: 1fr 1fr;
 
   @media ${(props) => props.theme.breakpoints.md} {
-    padding: 24px 48px 0;
-    flex-direction: column;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 16px 16px 0;
-
-    width: calc(100vw - 32px);
-    flex-direction: column;
   }
 `;
 
@@ -41,20 +34,9 @@ export const SectionTitle = styled.h2`
   padding: 0;
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 48px;
-    line-height: 48px;
-    margin-bottom: 12px;
-    padding: 0;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 32px;
-    line-height: 40px;
-    font-size: 32px;
-    line-height: 40px;
-    margin-bottom: 8px;
-    padding: 0;
-    max-width: 100%;
   }
 `;
 
@@ -67,16 +49,9 @@ export const SectionText = styled.p`
   color: rgba(255, 255, 255, 0.5);
 
   @media ${(props) => props.theme.breakpoints.md} {
-    max-width: 670px;
-    font-size: 20px;
-    line-height: 32px;
-    padding-bottom: 24px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 16px;
-    line-height: 24px;
-    padding-bottom: 16px;
   }
 `;
 
@@ -86,15 +61,12 @@ export const SectionDivider = styled.div`
   border-radius: 10px;
   background-color: #fff;
   background: linear-gradient(270deg, #13adc7 0%, #945dd6 100%);
-
+  margin-top: 5.8rem;
+  margin-bottom: 2rem;
   @media ${(props) => props.theme.breakpoints.md} {
-    width: 48px;
-    height: 4px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 32px;
-    height: 2px;
   }
 `;
 export const SectionSubText = styled.p`
@@ -105,19 +77,14 @@ export const SectionSubText = styled.p`
   color: rgba(255, 255, 255, 0.75);
 
   @media ${(props) => props.theme.breakpoints.md} {
-    max-width: 672px;
-    font-size: 16px;
-    line-height: 25px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 14px;
-    line-height: 22px;
   }
 `;
 
 export const ButtonBack = styled.a`
-  width: 15rem;
+  width: 16.3rem;
   height: 4rem;
   border-radius: 50px;
   display: flex;
@@ -135,17 +102,9 @@ export const ButtonBack = styled.a`
   }
 
   @media ${(props) => props.theme.breakpoints.md} {
-    width: 184px;
-    height: 48px;
-    font-size: 16px;
-    margin-bottom: 64px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 100%;
-    height: 32px;
-    font-size: 14px;
-    margin-bottom: 32px;
   }
 `;
 
@@ -183,10 +142,8 @@ export const ButtonFront = styled.button`
   }
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 16px;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 14px;
   }
 `;
