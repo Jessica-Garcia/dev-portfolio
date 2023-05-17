@@ -3,23 +3,31 @@ import styled from "styled-components";
 export const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
-  padding: 32px 48px 0;
+  padding: 32px 0 0;
   margin: 0 auto;
   max-width: 1040px;
-  box-sizing: content-box;
-  position: relative;
-  overflow: hidden;
   //border: solid red 2px;
 
   div {
     display: flex;
     justify-content: space-between;
   }
+  /* 
+  section {
+    article {
+      border: solid red 2px;
+      margin: 2rem 1rem 2rem 0rem;
+      width: 48rem;
+      img {
+        width: 100%;
 
-  span {
-    align-self: flex-end;
+        max-width: 45rem;
+        height: 25rem;
+        background-size: cover;
+      }
+    }
   }
-
+ */
   @media ${(props) => props.theme.breakpoints.md} {
   }
 
@@ -27,7 +35,7 @@ export const MainContainer = styled.main`
   }
 `;
 
-/* xport const Img = styled.img`
+/* export const Img = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 6px;

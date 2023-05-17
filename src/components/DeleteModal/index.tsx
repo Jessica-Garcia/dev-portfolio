@@ -7,11 +7,10 @@ import {
   Description,
   Overlay,
   Title,
-  ExternalLinks,
+  DeleteButton,
 } from "./styles";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { FaTrashAlt } from "react-icons/fa";
-
 interface IDeleteModalProps {
   projectId: number;
   deleteProject: (id: number) => void;
@@ -26,10 +25,10 @@ export const DeleteModal = ({
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
-        <ExternalLinks>
+        <DeleteButton>
           <FaTrashAlt />
           Excluir
-        </ExternalLinks>
+        </DeleteButton>
       </AlertDialog.Trigger>
       <AlertDialog.Portal>
         <Overlay />

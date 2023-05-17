@@ -14,11 +14,12 @@ export const FooterWrapper = styled.footer`
     padding: 40px 0 28px;
     //border: solid white 2px;
 
-    div {
+    li {
       display: flex;
       flex-direction: column;
       max-width: 220px;
       width: 100%;
+      text-decoration: none;
       //border: solid green 2px;
 
       span {

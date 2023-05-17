@@ -20,12 +20,12 @@ export const Timeline = () => {
       <Container>
         {TimeLineData.map((item, index) => {
           return (
-            <div key={index}>
+            <li key={index}>
               <span>
                 <h4>{item.year}</h4>
                 <p> {item.text}</p>
               </span>
-            </div>
+            </li>
           );
         })}
       </Container>

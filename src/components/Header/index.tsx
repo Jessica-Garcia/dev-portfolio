@@ -13,13 +13,13 @@ export const Header = () => {
       </div>
       <ul>
         <li>
-          <NavLink href="#about">Sobre</NavLink>
+          <NavLink href="/#about">Sobre</NavLink>
         </li>
         <li>
-          <NavLink href="#tech">Tecnologias</NavLink>
+          <NavLink href="/#tech">Tecnologias</NavLink>
         </li>
         <li>
-          <NavLink href="#projects">Projetos</NavLink>
+          <NavLink href="/#projects">Projetos</NavLink>
         </li>
       </ul>
       <SocialIconsContainer>

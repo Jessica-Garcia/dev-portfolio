@@ -1,14 +1,11 @@
-import React from "react";
-
 import {
   Section,
   SectionText,
   SectionTitle,
 } from "../../styles/GlobalComponents";
-
 import { LeftSection } from "./styles";
 
-export const Hero = (props: any) => {
+export const Hero = () => {
   return (
     <Section>
       <LeftSection>

@@ -94,7 +94,7 @@ export const ActionButtonsContainer = styled.div`
   gap: 2rem;
 `;
 
-export const ExternalLinks = styled.button`
+export const DeleteButton = styled.button`
   color: #d4c0c0;
   font-size: 1.2rem;
   padding: 0.7rem 1rem;

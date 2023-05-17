@@ -44,36 +44,5 @@ export const Container = styled.ul`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    touch-action: pan-x;
-    justify-content: initial;
-    margin-bottom: 8px;
-  }
-`;
-
-export const CarouselItemText = styled.p`
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 12px;
-    line-height: 18px;
-    padding-right: 32px;
-  }
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 10px;
-    line-height: 16px;
-    padding-right: 0;
-  }
-`;
-export const CarouselButtons = styled.div`
-  width: 288px;
-
-  display: none;
-  visibility: hidden;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    display: flex;
-    visibility: visible;
-    margin-bottom: 48px;
   }
 `;
