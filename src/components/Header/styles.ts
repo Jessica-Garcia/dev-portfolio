@@ -7,7 +7,6 @@ export const Container = styled.header`
   margin: auto;
   display: flex;
   justify-content: space-between;
-  //border: solid red 2px;
   position: fixed;
   z-index: 10;
   background: ${(props) => props.theme.colors.background1};
@@ -19,7 +18,6 @@ export const Container = styled.header`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    //border: solid green 2px;
 
     @media ${(props) => props.theme.breakpoints.sm} {
     }
@@ -30,7 +28,6 @@ export const Container = styled.header`
     flex-direction: row;
     align-items: center;
     width: 100%;
-    // border: solid blue 2px;
 
     a {
       display: flex;
@@ -58,7 +55,6 @@ export const SocialIconsContainer = styled.article`
   justify-content: flex-end;
   gap: 1.5rem;
   align-items: center;
-
   width: 40%;
 
   a {
@@ -83,7 +79,6 @@ export const NavLink = styled.a`
   line-height: 32px;
   color: rgba(255, 255, 255, 0.75);
   transition: 0.4s ease;
-  //border: solid 2px brown;
   &:hover {
     color: #fff;
     opacity: 1;

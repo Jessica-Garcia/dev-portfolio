@@ -58,13 +58,4 @@ export const List = styled.ul`
       color: rgba(255, 255, 255, 0.75);
     }
   }
-
-  @media ${(props) => props.theme.breakpoints.lg} {
-  }
-
-  @media ${(props) => props.theme.breakpoints.md} {
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-  }
 `;

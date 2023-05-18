@@ -9,7 +9,7 @@ export const Overlay = styled(AlertDialog.Overlay)`
   background: ${(props) => props.theme.colors.background2};
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-
+  z-index: 100;
   @keyframes overlayShow {
     from {
       opacity: 0;
@@ -25,7 +25,7 @@ export const Content = styled(AlertDialog.Content)`
   border-radius: 6px;
   padding: 2.5rem 3rem;
   background: ${(props) => props.theme.colors.background1};
-
+  z-index: 200;
   position: fixed;
   top: 50%;
   left: 50%;

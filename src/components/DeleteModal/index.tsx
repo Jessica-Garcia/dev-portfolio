@@ -11,29 +11,31 @@ import {
 } from "./styles";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { FaTrashAlt } from "react-icons/fa";
+import { IProjectInformation } from "../../@types/IProjectInformation";
 interface IDeleteModalProps {
-  projectId: number;
+  project: IProjectInformation;
   deleteProject: (id: number) => void;
 }
 
-export const DeleteModal = ({
-  projectId,
-  deleteProject,
-}: IDeleteModalProps) => {
+export const DeleteModal = ({ project, deleteProject }: IDeleteModalProps) => {
   const navigate = useNavigate();
 
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
         <DeleteButton>
-          <FaTrashAlt />
+          <strong>
+            <FaTrashAlt />
+          </strong>
           Excluir
         </DeleteButton>
       </AlertDialog.Trigger>
       <AlertDialog.Portal>
         <Overlay />
         <Content>
-          <Title>Você tem certeza que quer excluir esse projeto?</Title>
+          <Title>
+            Você tem certeza que quer excluir o projeto {project.title}?
+          </Title>
           <Description>
             Essa ação não poderá ser desfeita. O projeto será excluído
             permanentemente.
@@ -45,7 +47,7 @@ export const DeleteModal = ({
             <ActionButton asChild>
               <button
                 onClick={() => {
-                  deleteProject(projectId);
+                  deleteProject(project.id);
                   navigate("/");
                 }}
               >

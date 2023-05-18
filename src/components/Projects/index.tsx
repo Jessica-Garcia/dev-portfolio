@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { MainContainer } from "./styles";
 import {
   ButtonBack,
@@ -7,7 +7,6 @@ import {
   SectionTitle,
 } from "../../styles/GlobalComponents";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-
 import { IProjectInformation } from "../../@types/IProjectInformation";
 import { api } from "../../lib/axios";
 import { Slider, SliderProps, Slide } from "../Slider";
@@ -17,22 +16,11 @@ export const Projects = () => {
   const [projects, setProjects] = useState<IProjectInformation[]>([]);
 
   const settings: SliderProps = {
-    /* effect: "coverflow", */
     grabCursor: true,
-    centeredSlides: true,
-    loop: true,
-
-    /* coverflowEffect: {
-      rotate: 0,
-      stretch: -10,
-      depth: 100,
-      modifier: 2,
-      slideShadows: true,
-    }, */
+    // centeredSlides: true,
+    // loop: true,
     slidesPerView: 2.2,
     spaceBetween: 30,
-
-    // navigation: true,
     pagination: {
       clickable: true,
     },
@@ -42,6 +30,11 @@ export const Projects = () => {
     const response = await api.get<IProjectInformation[]>("projects");
     response.data && setProjects(response.data);
   }, []);
+
+  const handleDeleteProject = async (id: number) => {
+    await api.delete<IProjectInformation>(`projects/${id}`);
+    getProjects();
+  };
 
   useEffect(() => {
     getProjects();
@@ -64,7 +57,10 @@ export const Projects = () => {
           {projects.map((project) => {
             return (
               <Slide key={project.id}>
-                <ProjectSlideContent project={project} />
+                <ProjectSlideContent
+                  project={project}
+                  deleteProject={handleDeleteProject}
+                />
               </Slide>
             );
           })}
@@ -73,24 +69,3 @@ export const Projects = () => {
     </MainContainer>
   );
 };
-
-/* <Swiper>
-        {projects.map((project) => {
-          return (
-            <SwiperSlide key={project.id}>
-              <article>{project.title}</article>
-              <img src={project.image} alt="" />
-              <article>{project.tags}</article>
-
-              <article>
-                <button>{project.repoLink}</button>
-                <button>{project.webSiteLink}</button>
-                <button>Editar</button> <button>Excuir</button>
-              </article>
-              <article>
-                <span>{project.status}</span> <span>{project.endDate}</span>
-              </article>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper> */

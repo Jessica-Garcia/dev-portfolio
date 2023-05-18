@@ -16,7 +16,7 @@ const newProjectFormSchema = z.object({
   image: z.string(),
   repoLink: z.string(),
   webSiteLink: z.string(),
-  tags: z.string(),
+  tags: z.string().max(60),
   endDate: z.string(),
   status: z.enum(["Concluído", "Em progresso", "Pausado", "Futuro"]),
 });
@@ -36,31 +36,7 @@ export const ProjectInformation = () => {
   });
   const { handleSubmit, reset } = informationForm;
   const navigate = useNavigate();
-  /* const handleCreateProject = async (data: NewProjectFormInputs) => {
-    const {
-      description,
-      title,
-      image,
-      repoLink,
-      webSiteLink,
-      tags,
-      status,
-      endDate,
-    } = data;
 
-    await createProject({
-      description,
-      title,
-      image,
-      repoLink,
-      webSiteLink,
-      tags,
-      status,
-      endDate,
-    });
-
-    reset();
-  }; */
   return (
     <Section>
       <SectionDivider />

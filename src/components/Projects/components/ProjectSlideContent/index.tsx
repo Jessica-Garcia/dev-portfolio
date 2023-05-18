@@ -1,26 +1,94 @@
+import { FaCheck, FaEye, FaGithub, FaPencilAlt } from "react-icons/fa";
 import { IProjectInformation } from "../../../../@types/IProjectInformation";
-import { Container } from "./styles";
-
+import { dateFormatter } from "../../../../utils/formatter";
+import { Container, Status, StatusContainer, Tag } from "./styles";
+import { TbWorld } from "react-icons/tb";
+import { DeleteModal } from "../../../DeleteModal";
 interface SlideContentProps {
   project: IProjectInformation;
+  deleteProject: (id: number) => Promise<void>;
 }
 
-export const ProjectSlideContent = ({ project }: SlideContentProps) => {
+export const ProjectSlideContent = ({
+  project,
+  deleteProject,
+}: SlideContentProps) => {
+  const onDeleteProject = () => {
+    deleteProject(project.id);
+  };
+
   return (
     <Container>
-      <article>{project.title}</article>
+      <h3>{project.title}</h3>
       <img src={project.image} alt="" />
-      <article>{project.tags}</article>
+      <div>
+        {project.tags &&
+          project.tags.split(" ").map((tag, i) => {
+            return (
+              <Tag variant={Math.floor(Math.random() * 13)} key={i}>
+                {tag}
+              </Tag>
+            );
+          })}
+      </div>
       <p>{project.description}</p>
-
+      <section>
+        <div>
+          <button>
+            <strong>
+              <FaEye />
+            </strong>
+            Visualizar
+          </button>
+        </div>
+        <div>
+          <button>
+            <strong>
+              <FaPencilAlt />
+            </strong>
+            Editar
+          </button>
+        </div>
+        <div>
+          <DeleteModal project={project} deleteProject={onDeleteProject} />
+        </div>
+        {project.webSiteLink && (
+          <div>
+            <button>
+              <strong>
+                <TbWorld />
+              </strong>
+              Web
+            </button>
+          </div>
+        )}
+        {project.repoLink && (
+          <div>
+            <button>
+              <strong>
+                <FaGithub />
+              </strong>
+              Repositório
+            </button>
+          </div>
+        )}
+        {project.status !== "Concluído" && (
+          <div>
+            <button>
+              <FaCheck />
+              Concluir
+            </button>
+          </div>
+        )}
+      </section>
       <article>
-        <button>Visualizar</button>
-        <button>Editar</button> <button>Excuir</button>
-        <button>Repositório</button>
-        <button>Web</button>
-      </article>
-      <article>
-        <span>{project.status}</span> <span>{project.endDate}</span>
+        <StatusContainer>
+          <Status variant={project.status}></Status>
+          <strong>{project.status}</strong>
+        </StatusContainer>
+        {project.status === "Concluído" && project.endDate && (
+          <span>{dateFormatter.format(new Date(project.endDate))}</span>
+        )}
       </article>
     </Container>
   );

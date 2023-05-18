@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import * as RadioGroup from "@radix-ui/react-radio-group";
-
-export const FormContainer = styled.div``;
 
 export const ButtonsContainer = styled.div`
   margin: 0.5rem;
@@ -9,7 +6,6 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
-  //border: solid yellowgreen 2px;
 `;
 
 export const ReturnButton = styled.button`
@@ -37,12 +33,6 @@ export const ReturnButton = styled.button`
   }
   &:focus {
     outline: none;
-  }
-
-  @media ${(props) => props.theme.breakpoints.md} {
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
   }
 `;
 
@@ -72,11 +62,5 @@ export const SaveButton = styled.button`
   }
   &:focus {
     outline: none;
-  }
-
-  @media ${(props) => props.theme.breakpoints.md} {
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
   }
 `;

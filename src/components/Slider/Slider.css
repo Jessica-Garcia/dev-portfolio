@@ -5,20 +5,19 @@
     padding-left: 10px;
     display: flex;
     flex-direction: column;
-    /* border: solid blue 2px; */
     height: min-content;
-    
+  
 }
 
-.swiper-slide{
+.swiper-slide {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border: solid green 2px; */
     padding: 1rem;
     background: #121214;
     border-radius: 8px;
     box-shadow: 2px 2px 10px #718096;
+    cursor: grab;
 }
 
 .swiper-pagination-bullet-active {
@@ -31,12 +30,6 @@
 }
 
 .swiper-pagination {
-    /* border: solid red 2px; */
-    
     display: flex;
-    justify-content: center !important;
-    
-    
-    
-    
+    justify-content: center !important;   
 }

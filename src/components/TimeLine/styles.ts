@@ -7,7 +7,6 @@ export const Container = styled.ul`
   list-style: none;
   display: flex;
   justify-content: space-between;
-  //border: solid red 2px;
   margin-left: 32px;
   margin-bottom: 80px;
 

@@ -11,7 +11,6 @@ export const Root = styled(RadioGroup.Root)`
     padding: 0 0.5rem;
     display: flex;
     align-items: center;
-    //border: solid green 2px;
     height: 28px;
   }
 `;

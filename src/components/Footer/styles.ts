@@ -12,7 +12,6 @@ export const FooterWrapper = styled.footer`
     display: flex;
     justify-content: space-between;
     padding: 40px 0 28px;
-    //border: solid white 2px;
 
     li {
       display: flex;
@@ -20,7 +19,6 @@ export const FooterWrapper = styled.footer`
       max-width: 220px;
       width: 100%;
       text-decoration: none;
-      //border: solid green 2px;
 
       span {
         display: flex;
