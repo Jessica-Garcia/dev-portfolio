@@ -1,4 +1,3 @@
-import { useCallback, useContext, useEffect, useState } from "react";
 import { MainContainer } from "./styles";
 import {
   ButtonBack,
@@ -12,13 +11,14 @@ import { api } from "../../lib/axios";
 import { Slider, SliderProps, Slide } from "../Slider";
 import { ProjectSlideContent } from "./components/ProjectSlideContent";
 
-export const Projects = () => {
-  const [projects, setProjects] = useState<IProjectInformation[]>([]);
+interface ProjectProps {
+  projects: IProjectInformation[];
+  getProjects: () => Promise<void>;
+}
 
+export const Projects = ({ projects, getProjects }: ProjectProps) => {
   const settings: SliderProps = {
     grabCursor: true,
-    // centeredSlides: true,
-    // loop: true,
     slidesPerView: 2.2,
     spaceBetween: 30,
     pagination: {
@@ -26,19 +26,10 @@ export const Projects = () => {
     },
   };
 
-  const getProjects = useCallback(async () => {
-    const response = await api.get<IProjectInformation[]>("projects");
-    response.data && setProjects(response.data);
-  }, []);
-
   const handleDeleteProject = async (id: number) => {
     await api.delete<IProjectInformation>(`projects/${id}`);
     getProjects();
   };
-
-  useEffect(() => {
-    getProjects();
-  }, [getProjects]);
 
   return (
     <MainContainer id="projects">

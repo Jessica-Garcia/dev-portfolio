@@ -1,34 +1,56 @@
-import { Container } from "./styles";
+import { ITimelineInformations } from "../../@types/ITimelineInformations";
 import {
-  Section,
   SectionDivider,
   SectionText,
   SectionTitle,
 } from "../../styles/GlobalComponents";
-import { TimeLineData } from "../../constants/constants";
+import { dateFormatter } from "../../utils/formatter";
+import { Slide, Slider, SliderProps } from "../Slider";
+import { Container, TimelineSection } from "./styles";
+interface TimelineProps {
+  timeList: ITimelineInformations[];
+  getTimeline: () => Promise<void>;
+}
+export const Timeline = ({ timeList, getTimeline }: TimelineProps) => {
+  const settings: SliderProps = {
+    grabCursor: true,
+    // centeredSlides: true,
+    slidesPerView: 4.3,
+    spaceBetween: 30,
+    pagination: {
+      clickable: true,
+    },
+  };
 
-export const Timeline = () => {
   return (
-    <Section id="about">
+    <TimelineSection id="about">
       <SectionDivider />
       <SectionTitle>Sobre mim</SectionTitle>
       <SectionText>
-        Mantenho-me sempre buscando conhecimento sobre a área tecnológica, para
-        que dessa forma eu possa contribuir com o crescimento e inovação dos
-        negócios.
+        Mantenho o aprendizado contínuo sobre a área tecnológica, para que dessa
+        forma eu possa contribuir com o crescimento e inovação dos negócios.
       </SectionText>
-      <Container>
-        {TimeLineData.map((item, index) => {
+
+      <Slider settings={settings}>
+        {timeList.map((time) => {
           return (
-            <li key={index}>
-              <span>
-                <h4>{item.year}</h4>
-                <p> {item.text}</p>
-              </span>
-            </li>
+            <Slide key={time.id}>
+              <Container>
+                <span>
+                  <h4>
+                    {`${dateFormatter
+                      .format(new Date(time.date))
+                      .slice(3, 5)}/${dateFormatter
+                      .format(new Date(time.date))
+                      .slice(6)}`}
+                  </h4>
+                  <p> {`-${time.description}`}</p>
+                </span>
+              </Container>
+            </Slide>
           );
         })}
-      </Container>
-    </Section>
+      </Slider>
+    </TimelineSection>
   );
 };

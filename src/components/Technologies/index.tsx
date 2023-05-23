@@ -18,16 +18,16 @@ export const Technologies = () => {
       <List>
         <li>
           <h4>Front-End</h4>
+          <p>CSS3</p>
+          <p>Javascript</p>
           <p>React</p>
           <p>Next</p>
-          <p>LWC</p>
-          <p>Visualforce</p>
         </li>
         <li>
           <h4>Back-End</h4>
           <p>Java</p>
           <p>Node</p>
-          <p>Apex</p>
+          <p>Express</p>
         </li>
         <li>
           <h4>Databases</h4>
