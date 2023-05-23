@@ -10,6 +10,7 @@ import { IProjectInformation } from "../../@types/IProjectInformation";
 import { api } from "../../lib/axios";
 import { Slider, SliderProps, Slide } from "../Slider";
 import { ProjectSlideContent } from "./components/ProjectSlideContent";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectProps {
   projects: IProjectInformation[];
@@ -25,6 +26,7 @@ export const Projects = ({ projects, getProjects }: ProjectProps) => {
       clickable: true,
     },
   };
+  const navigate = useNavigate();
 
   const handleDeleteProject = async (id: number) => {
     await api.delete<IProjectInformation>(`projects/${id}`);
@@ -36,7 +38,7 @@ export const Projects = ({ projects, getProjects }: ProjectProps) => {
       <SectionDivider />
       <div>
         <SectionTitle>Projetos</SectionTitle>
-        <ButtonBack>
+        <ButtonBack onClick={() => navigate("/information/insert")}>
           <ButtonFront>
             <AiOutlinePlusCircle title="Adicionar" />
             Novo Projeto

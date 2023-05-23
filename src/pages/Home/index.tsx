@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Hero } from "../../components/Hero";
 import { Projects } from "../../components/Projects";
 import { Technologies } from "../../components/Technologies";
@@ -6,15 +6,16 @@ import { Timeline } from "../../components/TimeLine";
 import { IProjectInformation } from "../../@types/IProjectInformation";
 import { api } from "../../lib/axios";
 import { ITimelineInformations } from "../../@types/ITimelineInformations";
+import { ProjectsContext } from "../../contexts/ProjectsContext";
 
 export const Home = () => {
-  const [projects, setProjects] = useState<IProjectInformation[]>([]);
+  const { projects, setProjects } = useContext(ProjectsContext);
   const [timeList, setTimeList] = useState<ITimelineInformations[]>([]);
 
   const getProjects = useCallback(async () => {
     const response = await api.get<IProjectInformation[]>("projects");
     response.data && setProjects(response.data);
-  }, []);
+  }, [setProjects]);
 
   const getTimeline = useCallback(async () => {
     const response = await api.get<ITimelineInformations[]>("timeline");

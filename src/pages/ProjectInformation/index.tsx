@@ -1,27 +1,17 @@
+import { FormContent } from "./components/FormContent";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import {
+  NewProjectFormInputs,
+  newProjectFormSchema,
+} from "../../validations/ZodValidations";
+import { useNavigate } from "react-router-dom";
 import { ButtonsContainer, ReturnButton, SaveButton } from "./styles";
 import {
   Section,
   SectionDivider,
   SectionTitle,
 } from "../../styles/GlobalComponents";
-import { FormContent } from "./components/FormContent";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-
-const newProjectFormSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(5),
-  image: z.string(),
-  repoLink: z.string(),
-  webSiteLink: z.string(),
-  tags: z.string().max(60),
-  endDate: z.string(),
-  status: z.enum(["Concluído", "Em progresso", "Pausado", "Futuro"]),
-});
-
-type NewProjectFormInputs = z.infer<typeof newProjectFormSchema>;
 
 export const ProjectInformation = () => {
   const informationForm = useForm<NewProjectFormInputs>({

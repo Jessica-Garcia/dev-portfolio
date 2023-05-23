@@ -7,7 +7,7 @@ export const Header = () => {
     <Container>
       <div>
         <a href="/">
-          <FaLaptopCode color="  rgba(255, 255, 255, 0.66)" />
+          <FaLaptopCode color="rgba(255, 255, 255, 0.66)" />
           <span>Jéssica Garcia</span>
         </a>
       </div>

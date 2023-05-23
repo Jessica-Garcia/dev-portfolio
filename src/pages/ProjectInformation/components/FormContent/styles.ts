@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const FormContentStyle = styled.form`
   padding: 1rem;
-
-  border: solid blue 2px;
   margin: 0.5rem;
   display: flex;
   justify-content: center;

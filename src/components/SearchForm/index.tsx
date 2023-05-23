@@ -1,15 +1,12 @@
-import { SearchFormContainer } from "./styles";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+  SearchFormInputs,
+  searchFormSchema,
+} from "../../validations/ZodValidations";
+import { SearchFormContainer } from "./styles";
 import { FaSearch } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
-
-const searchFormSchema = z.object({
-  query: z.string().min(1),
-});
-
-type SearchFormInputs = z.infer<typeof searchFormSchema>;
 interface SearchFormProps {
   onGetProjects: (query?: string) => void;
 }
