@@ -1,6 +1,6 @@
 export interface ICreateProjectInformationInput {
   title: string;
-  description?: string;
+  description: string;
   image?: string;
   repoLink?: string;
   webSiteLink?: string;

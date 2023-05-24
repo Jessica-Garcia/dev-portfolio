@@ -4,6 +4,7 @@ import { dateFormatter } from "../../../../utils/formatter";
 import { Container, Status, StatusContainer, Tag } from "./styles";
 import { TbWorld } from "react-icons/tb";
 import { DeleteModal } from "../../../DeleteModal";
+import { useNavigate } from "react-router-dom";
 interface SlideContentProps {
   project: IProjectInformation;
   deleteProject: (id: number) => Promise<void>;
@@ -16,7 +17,7 @@ export const ProjectSlideContent = ({
   const onDeleteProject = () => {
     deleteProject(project.id);
   };
-
+  const navigate = useNavigate();
   return (
     <Container>
       <h3>{project.title}</h3>
@@ -42,7 +43,7 @@ export const ProjectSlideContent = ({
           </button>
         </div>
         <div>
-          <button>
+          <button onClick={() => navigate(`/information/update/${project.id}`)}>
             <strong>
               <FaPencilAlt />
             </strong>
