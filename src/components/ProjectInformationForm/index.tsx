@@ -5,8 +5,6 @@ import {
   newProjectFormSchema,
 } from "../../validations/ZodValidations";
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext } from "react";
-import { ProjectsContext } from "../../contexts/ProjectsContext";
 import {
   ButtonsContainer,
   FieldsContent,
@@ -20,12 +18,15 @@ import {
   SectionDivider,
   SectionTitle,
 } from "../../styles/GlobalComponents";
-import { RadioButtons } from "./components/RadioButtons";
-import { IProjectInformation } from "../../@types/IProjectInformation";
+import { RadioButtons } from "../RadioButtons";
+import { ICreateProjectInformationInput } from "../../@types/ICreateProjectInformationInput";
 
-export const ProjectInformation = () => {
-  const { createProject, updateProject } = useContext(ProjectsContext);
-  const { control, register, watch, handleSubmit, reset } =
+interface ProjectFormProps {
+  onSaveProject: (project: NewProjectFormInputs) => Promise<void>;
+}
+
+export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
+  const { control, register, watch, handleSubmit } =
     useForm<NewProjectFormInputs>({
       resolver: zodResolver(newProjectFormSchema),
       defaultValues: {
@@ -38,19 +39,7 @@ export const ProjectInformation = () => {
     });
 
   const status = watch("status");
-  const id = Number(useParams());
-
   const navigate = useNavigate();
-
-  const handleSaveProject = (data: NewProjectFormInputs) => {
-    if (id) {
-      updateProject(id, data);
-    } else {
-      createProject(data);
-    }
-    reset();
-    navigate("/#projects");
-  };
 
   return (
     <Section>
@@ -58,7 +47,7 @@ export const ProjectInformation = () => {
       <SectionTitle>Cadastre um novo projeto</SectionTitle>
 
       <FormContainer
-        onSubmit={handleSubmit(handleSaveProject)}
+        onSubmit={handleSubmit(onSaveProject)}
         id="projectForm"
         autoComplete="off"
       >

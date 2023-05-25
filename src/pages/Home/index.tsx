@@ -6,10 +6,9 @@ import { Timeline } from "../../components/TimeLine";
 import { IProjectInformation } from "../../@types/IProjectInformation";
 import { api } from "../../lib/axios";
 import { ITimelineInformations } from "../../@types/ITimelineInformations";
-import { ProjectsContext } from "../../contexts/ProjectsContext";
 
 export const Home = () => {
-  const { projects, setProjects } = useContext(ProjectsContext);
+  const [projects, setProjects] = useState<IProjectInformation[]>([]);
   const [timeList, setTimeList] = useState<ITimelineInformations[]>([]);
 
   const getProjects = useCallback(async () => {

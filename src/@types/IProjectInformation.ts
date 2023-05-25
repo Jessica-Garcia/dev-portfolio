@@ -1,12 +1,12 @@
 export interface IProjectInformation {
-  id: number;
+  id?: string;
   title: string;
   description: string;
   image: string;
   repoLink: string;
   webSiteLink: string;
   tags: string;
-  registrationDate: Date;
+  registrationDate: Date | undefined;
   status: "Concluído" | "Em progresso" | "Pausado" | "Futuro";
   endDate?: string;
 }

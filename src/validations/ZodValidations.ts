@@ -6,7 +6,7 @@ export const searchFormSchema = z.object({
 
 export const newProjectFormSchema = z.object({
   title: z.string().min(1),
-  description: z.string().min(5),
+  description: z.string().min(1),
   image: z.string(),
   repoLink: z.string(),
   webSiteLink: z.string(),
