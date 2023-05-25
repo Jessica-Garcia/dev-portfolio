@@ -14,7 +14,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { IProjectInformation } from "../../@types/IProjectInformation";
 interface IDeleteModalProps {
   project: IProjectInformation;
-  deleteProject: (id: number) => void;
+  deleteProject: (id: string | undefined) => void;
 }
 
 export const DeleteModal = ({ project, deleteProject }: IDeleteModalProps) => {

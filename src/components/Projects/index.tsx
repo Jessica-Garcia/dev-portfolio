@@ -28,7 +28,7 @@ export const Projects = ({ projects, getProjects }: ProjectProps) => {
   };
   const navigate = useNavigate();
 
-  const handleDeleteProject = async (id: number) => {
+  const handleDeleteProject = async (id: string | undefined) => {
     await api.delete<IProjectInformation>(`projects/${id}`);
     getProjects();
   };

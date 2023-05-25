@@ -12,8 +12,12 @@ export const Home = () => {
   const [timeList, setTimeList] = useState<ITimelineInformations[]>([]);
 
   const getProjects = useCallback(async () => {
-    const response = await api.get<IProjectInformation[]>("projects");
-    response.data && setProjects(response.data);
+    try {
+      const response = await api.get<IProjectInformation[]>("projects");
+      response.data && setProjects(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }, [setProjects]);
 
   const getTimeline = useCallback(async () => {

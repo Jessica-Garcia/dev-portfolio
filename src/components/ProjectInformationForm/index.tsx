@@ -19,14 +19,16 @@ import {
   SectionTitle,
 } from "../../styles/GlobalComponents";
 import { RadioButtons } from "../RadioButtons";
-import { ICreateProjectInformationInput } from "../../@types/ICreateProjectInformationInput";
+import { useCallback, useEffect } from "react";
+import { IProjectInformation } from "../../@types/IProjectInformation";
+import { api } from "../../lib/axios";
 
 interface ProjectFormProps {
   onSaveProject: (project: NewProjectFormInputs) => Promise<void>;
 }
 
 export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
-  const { control, register, watch, handleSubmit } =
+  const { control, register, watch, handleSubmit, setValue } =
     useForm<NewProjectFormInputs>({
       resolver: zodResolver(newProjectFormSchema),
       defaultValues: {
@@ -38,8 +40,29 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
       },
     });
 
+  const { id } = useParams();
   const status = watch("status");
   const navigate = useNavigate();
+
+  const getProject = useCallback(async () => {
+    try {
+      const { data } = await api.get<IProjectInformation>(`projects/${id}`);
+      setValue("title", `${data.title}`);
+      setValue("image", `${data.image}`);
+      setValue("description", `${data.description}`);
+      setValue("tags", `${data.tags}`);
+      setValue("repoLink", `${data.repoLink}`);
+      setValue("webSiteLink", `${data.webSiteLink}`);
+      setValue("status", `${data.status}`);
+      setValue("endDate", `${data.endDate}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [id, setValue]);
+
+  useEffect(() => {
+    getProject();
+  }, [getProject]);
 
   return (
     <Section>

@@ -7,7 +7,7 @@ import { DeleteModal } from "../../../DeleteModal";
 import { useNavigate } from "react-router-dom";
 interface SlideContentProps {
   project: IProjectInformation;
-  deleteProject: (id: number) => Promise<void>;
+  deleteProject: (id: string | undefined) => Promise<void>;
 }
 
 export const ProjectSlideContent = ({

@@ -14,7 +14,6 @@ interface TimelineProps {
 export const Timeline = ({ timeList, getTimeline }: TimelineProps) => {
   const settings: SliderProps = {
     grabCursor: true,
-    // centeredSlides: true,
     slidesPerView: 4.3,
     spaceBetween: 30,
     pagination: {
