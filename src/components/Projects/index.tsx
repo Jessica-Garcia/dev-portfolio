@@ -11,7 +11,6 @@ import { api } from "../../lib/axios";
 import { Slider, SliderProps, Slide } from "../Slider";
 import { ProjectSlideContent } from "./components/ProjectSlideContent";
 import { useNavigate } from "react-router-dom";
-import { dateFormatter } from "../../utils/formatter";
 import { useCallback } from "react";
 
 interface ProjectProps {

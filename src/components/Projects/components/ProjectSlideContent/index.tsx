@@ -4,7 +4,7 @@ import { dateFormatter } from "../../../../utils/formatter";
 import { Container, Status, StatusContainer, Tag } from "./styles";
 import { TbWorld } from "react-icons/tb";
 import { DeleteModal } from "../../../DeleteModal";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface SlideContentProps {
   project: IProjectInformation;
   deleteProject: (id: string | undefined) => Promise<void>;
@@ -49,7 +49,7 @@ export const ProjectSlideContent = ({
 
       <section>
         <div>
-          <button>
+          <button onClick={() => navigate(`/information/view/${project.id}`)}>
             <strong>
               <FaEye />
             </strong>
