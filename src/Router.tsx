@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 import { ProjectInformationForm } from "./components/ProjectInformationForm";
 import { ProjectRegistration } from "./pages/ProjectRegistration";
+import { ViewProject } from "./pages/ViewProject";
 
 export const Router = () => {
   return (
@@ -14,7 +15,7 @@ export const Router = () => {
           path="/information/update/:id"
           element={<ProjectRegistration />}
         />
-        <Route path="/information/view/:id" element={<ProjectRegistration />} />
+        <Route path="/information/view/:id" element={<ViewProject />} />
       </Route>
     </Routes>
   );

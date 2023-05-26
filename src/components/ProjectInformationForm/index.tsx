@@ -42,9 +42,12 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
 
   const { id } = useParams();
   const status = watch("status");
+  const endDate = watch("endDate");
+  const create = `/information/insert`;
+
   const navigate = useNavigate();
 
-  const getProject = useCallback(async () => {
+  const getProjectFieldsValue = useCallback(async () => {
     try {
       const { data } = await api.get<IProjectInformation>(`projects/${id}`);
       setValue("title", `${data.title}`);
@@ -54,20 +57,32 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
       setValue("repoLink", `${data.repoLink}`);
       setValue("webSiteLink", `${data.webSiteLink}`);
       setValue("status", `${data.status}`);
-      setValue("endDate", `${data.endDate}`);
+      data.endDate &&
+        setValue(
+          "endDate",
+          `${new Date(data.endDate).getFullYear()}-0${
+            new Date(data.endDate).getMonth() + 1
+          }-${new Date(data.endDate).getDate()}`
+        );
     } catch (error) {
       console.log(error);
     }
   }, [id, setValue]);
 
   useEffect(() => {
-    getProject();
-  }, [getProject]);
+    if (id) {
+      getProjectFieldsValue();
+    }
+  }, [getProjectFieldsValue, id]);
 
   return (
     <Section>
       <SectionDivider />
-      <SectionTitle>Cadastre um novo projeto</SectionTitle>
+      {window.location.pathname === create ? (
+        <SectionTitle>Cadastre um novo projeto</SectionTitle>
+      ) : (
+        <SectionTitle>Atualize o Projeto</SectionTitle>
+      )}
 
       <FormContainer
         onSubmit={handleSubmit(onSaveProject)}
@@ -113,12 +128,15 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
             <RadioButtons control={control} name="status" />
           </FieldsContent>
           <FieldsContent>
-            <label htmlFor="endDate">Data de conclusão</label>
+            <label htmlFor="endDate">
+              Data de conclusão<small> *(Obrigatório se concluído)</small>
+            </label>
             <input
               type="date"
               {...register("endDate")}
               required={status === "Concluído"}
               id="endDate"
+              value={status === "Concluído" ? endDate : ""}
             />
           </FieldsContent>
           <FieldsContent>

@@ -46,20 +46,34 @@ export const ProjectRegistration = () => {
   const handleUpdateProject = useCallback(
     async (data: NewProjectFormInputs) => {
       try {
-        const updatedProject = {
-          description: data.description,
-          title: data.title,
-          image:
-            data.image ||
-            "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80&h=400",
-          repoLink: data.repoLink,
-          webSiteLink: data.webSiteLink,
-          tags: data.tags,
-          status: data.status,
-          endDate: data.endDate,
-        };
-
-        await api.put(`projects/${id}`, { ...updatedProject });
+        if (data.status === "Concluído") {
+          const updatedProject = {
+            description: data.description,
+            title: data.title,
+            image:
+              data.image ||
+              "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80&h=400",
+            repoLink: data.repoLink,
+            webSiteLink: data.webSiteLink,
+            tags: data.tags,
+            status: data.status,
+            endDate: data.endDate,
+          };
+          await api.put(`projects/${id}`, { ...updatedProject });
+        } else {
+          const updatedProject = {
+            description: data.description,
+            title: data.title,
+            image:
+              data.image ||
+              "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80&h=400",
+            repoLink: data.repoLink,
+            webSiteLink: data.webSiteLink,
+            tags: data.tags,
+            status: data.status,
+          };
+          await api.put(`projects/${id}`, { ...updatedProject });
+        }
 
         reset();
         navigate("/#projects");

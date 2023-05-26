@@ -88,7 +88,8 @@ export const Tag = styled.strong<TagsProps>`
 `;
 
 interface StatusProps {
-  variant: "Concluído" | "Em progresso" | "Pausado" | "Futuro";
+  // variant: "Concluído" | "Em progresso" | "Pausado" | "Futuro";
+  variant: string;
 }
 
 export const StatusContainer = styled.span`

@@ -24,6 +24,10 @@ export const FieldsContent = styled.span`
     margin: 0.5rem;
     font-size: 1.8rem;
     color: rgba(255, 255, 255, 0.75);
+
+    small {
+      font-size: 1rem;
+    }
   }
 
   input {

@@ -11,6 +11,8 @@ import { api } from "../../lib/axios";
 import { Slider, SliderProps, Slide } from "../Slider";
 import { ProjectSlideContent } from "./components/ProjectSlideContent";
 import { useNavigate } from "react-router-dom";
+import { dateFormatter } from "../../utils/formatter";
+import { useCallback } from "react";
 
 interface ProjectProps {
   projects: IProjectInformation[];
@@ -33,6 +35,25 @@ export const Projects = ({ projects, getProjects }: ProjectProps) => {
     getProjects();
   };
 
+  const handleUpdateProjectStatusToComplete = useCallback(
+    async (project: IProjectInformation) => {
+      try {
+        const date = new Date();
+        await api.put<IProjectInformation>(`projects/${project.id}`, {
+          ...project,
+          status: "Concluído",
+          endDate: `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}`,
+        });
+        getProjects();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getProjects]
+  );
+
   return (
     <MainContainer id="projects">
       <SectionDivider />
@@ -53,6 +74,9 @@ export const Projects = ({ projects, getProjects }: ProjectProps) => {
                 <ProjectSlideContent
                   project={project}
                   deleteProject={handleDeleteProject}
+                  updateProjectStatusToComplete={
+                    handleUpdateProjectStatusToComplete
+                  }
                 />
               </Slide>
             );
