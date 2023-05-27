@@ -106,7 +106,8 @@ export const ProjectSlideContent = ({
           <strong>{project.status}</strong>
         </StatusContainer>
         {project.status === "Concluído" && project.endDate && (
-          <span>{dateFormatter.format(new Date(project.endDate))}</span>
+          <span>{project.endDate.split("-").reverse().join("/")}</span>
+          // <span>{dateFormatter.format(new Date(project.endDate))}</span>
         )}
       </article>
     </Container>

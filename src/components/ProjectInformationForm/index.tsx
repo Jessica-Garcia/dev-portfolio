@@ -37,12 +37,12 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
         webSiteLink: "",
         tags: "",
         status: "Em progresso",
+        endDate: "",
       },
     });
 
   const { id } = useParams();
   const status = watch("status");
-  const endDate = watch("endDate");
   const create = `/information/insert`;
 
   const navigate = useNavigate();
@@ -58,12 +58,8 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
       setValue("webSiteLink", `${data.webSiteLink}`);
       setValue("status", `${data.status}`);
       data.endDate &&
-        setValue(
-          "endDate",
-          `${new Date(data.endDate).getFullYear()}-0${
-            new Date(data.endDate).getMonth() + 1
-          }-${new Date(data.endDate).getDate()}`
-        );
+        data.endDate.length &&
+        setValue("endDate", `${data.endDate.split("/").reverse().join("-")}`);
     } catch (error) {
       console.log(error);
     }
@@ -127,18 +123,18 @@ export const ProjectInformationForm = ({ onSaveProject }: ProjectFormProps) => {
             <legend>Status</legend>
             <RadioButtons control={control} name="status" />
           </FieldsContent>
-          <FieldsContent>
-            <label htmlFor="endDate">
-              Data de conclusão<small> *(Obrigatório se concluído)</small>
-            </label>
-            <input
-              type="date"
-              {...register("endDate")}
-              required={status === "Concluído"}
-              id="endDate"
-              value={status === "Concluído" ? endDate : ""}
-            />
-          </FieldsContent>
+          {status === "Concluído" && (
+            <FieldsContent>
+              <label htmlFor="endDate">Data de conclusão*</label>
+              <input
+                type="date"
+                {...register("endDate")}
+                required={status === "Concluído"}
+                id="endDate"
+              />
+            </FieldsContent>
+          )}
+
           <FieldsContent>
             <label htmlFor="description">Descrição*</label>
             <textarea

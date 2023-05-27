@@ -15,13 +15,13 @@ export const FormContentStyle = styled.article`
 `;
 
 export const FieldsContent = styled.span`
-  margin: 0.5rem;
+  margin: 1rem 0.5rem;
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
 
   label {
-    margin: 0.5rem;
+    margin: 1rem 0.5rem;
     font-size: 1.8rem;
     color: rgba(255, 255, 255, 0.75);
 
@@ -38,7 +38,7 @@ export const FieldsContent = styled.span`
   textarea {
     margin: 0.5rem;
     display: flex;
-    height: 21.6rem;
+    height: 26.4rem;
     resize: none;
   }
 

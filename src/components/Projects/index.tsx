@@ -12,6 +12,7 @@ import { Slider, SliderProps, Slide } from "../Slider";
 import { ProjectSlideContent } from "./components/ProjectSlideContent";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { NewProjectFormInputs } from "../../validations/ZodValidations";
 
 interface ProjectProps {
   projects: IProjectInformation[];
@@ -41,9 +42,11 @@ export const Projects = ({ projects, getProjects }: ProjectProps) => {
         await api.put<IProjectInformation>(`projects/${project.id}`, {
           ...project,
           status: "Concluído",
-          endDate: `${date.getFullYear()}-${
-            date.getMonth() + 1
-          }-${date.getDate()}`,
+          endDate: `${new Intl.DateTimeFormat("pt-BR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          }).format(date)}`,
         });
         getProjects();
       } catch (error) {
