@@ -53,6 +53,12 @@ export const Container = styled.section`
     }
   }
 
+  article {
+    span {
+      font-size: 1.4rem;
+    }
+  }
+
   p {
     display: flex;
     justify-content: center;

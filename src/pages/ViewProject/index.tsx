@@ -1,24 +1,17 @@
 import { SectionDivider, SectionTitle } from "../../styles/GlobalComponents";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IProjectInformation } from "../../@types/IProjectInformation";
 import { api } from "../../lib/axios";
-
 import { useNavigate, useParams } from "react-router-dom";
-
-import { MainContainer } from "../../components/Projects/styles";
-
+import { MainContainer, SectionButtons } from "./styles";
 import {
   Status,
   StatusContainer,
   Tag,
 } from "../../components/Projects/components/ProjectSlideContent/styles";
 import { DeleteModal } from "../../components/DeleteModal";
-import { FaCheck, FaEye, FaGithub, FaPencilAlt } from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaGithub, FaPencilAlt } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
 import { useCallback, useEffect, useState } from "react";
-import { dateFormatter } from "../../utils/formatter";
-
-interface ProjectProps {}
 
 export const ViewProject = () => {
   const [project, setProject] = useState<IProjectInformation>();
@@ -50,6 +43,7 @@ export const ViewProject = () => {
   useEffect(() => {
     getProject();
   }, [getProject]);
+
   return (
     <>
       {project && (
@@ -60,7 +54,6 @@ export const ViewProject = () => {
           </div>
           <article>
             <section>
-              <h3>{project.title}</h3>
               <img src={project.image} alt="" />
               <div>
                 {project.tags &&
@@ -73,16 +66,20 @@ export const ViewProject = () => {
                   })}
               </div>
               <p>{project.description}</p>
-              <section>
+              <SectionButtons>
+                <div>
+                  <button onClick={() => navigate("/#projects")}>
+                    <FaArrowAltCircleLeft />
+                    Voltar
+                  </button>
+                </div>
                 <div>
                   <button
                     onClick={() =>
                       navigate(`/information/update/${project.id}`)
                     }
                   >
-                    <strong>
-                      <FaPencilAlt />
-                    </strong>
+                    <FaPencilAlt />
                     Editar
                   </button>
                 </div>
@@ -96,9 +93,7 @@ export const ViewProject = () => {
                   <div>
                     <a href={project.repoLink} target="_blank" rel="noreferrer">
                       <button>
-                        <strong>
-                          <TbWorld />
-                        </strong>
+                        <TbWorld />
                         Web
                       </button>
                     </a>
@@ -108,30 +103,23 @@ export const ViewProject = () => {
                   <div>
                     <a href={project.repoLink} target="_blank" rel="noreferrer">
                       <button>
-                        <strong>
-                          <FaGithub />
-                        </strong>
-                        Repositório
+                        <FaGithub />
+                        Github
                       </button>
                     </a>
                   </div>
                 )}
-                {project.status !== "Concluído" && (
-                  <div>
-                    <button>
-                      <FaCheck />
-                      Concluir
-                    </button>
-                  </div>
-                )}
-              </section>
+              </SectionButtons>
               <article>
                 <StatusContainer>
                   <Status variant={project.status}></Status>
                   <strong>{project.status}</strong>
                 </StatusContainer>
                 {project.status === "Concluído" && project.endDate && (
-                  <span>{dateFormatter.format(new Date(project.endDate))}</span>
+                  <span>
+                    {project.endDate.split("-").reverse().join("/") ||
+                      project.endDate.split("-").reverse().join("/")}
+                  </span>
                 )}
               </article>
             </section>

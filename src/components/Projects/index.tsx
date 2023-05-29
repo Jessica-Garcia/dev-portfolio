@@ -12,7 +12,6 @@ import { Slider, SliderProps, Slide } from "../Slider";
 import { ProjectSlideContent } from "./components/ProjectSlideContent";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
-import { NewProjectFormInputs } from "../../validations/ZodValidations";
 
 interface ProjectProps {
   projects: IProjectInformation[];

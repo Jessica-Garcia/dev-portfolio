@@ -6,7 +6,7 @@ export const MainContainer = styled.main`
   padding: 32px 0 0;
   margin: 0 auto;
   max-width: 1040px;
-  //border: solid red 2px;
+
   div {
     display: flex;
     justify-content: space-between;

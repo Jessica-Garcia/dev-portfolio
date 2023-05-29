@@ -1,6 +1,5 @@
 import { FaCheck, FaEye, FaGithub, FaPencilAlt } from "react-icons/fa";
 import { IProjectInformation } from "../../../../@types/IProjectInformation";
-import { dateFormatter } from "../../../../utils/formatter";
 import { Container, Status, StatusContainer, Tag } from "./styles";
 import { TbWorld } from "react-icons/tb";
 import { DeleteModal } from "../../../DeleteModal";
